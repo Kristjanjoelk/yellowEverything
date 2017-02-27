@@ -1,0 +1,29 @@
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+.currentContainer {
+    display: table;
+    margin: 0 auto;
+}
+.current {
+    margin-left: 45%;
+    margin-top: 45%;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+}
+
+#current {
+	width: 10px;
+	height: 10px;
+	
+	background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
+	background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, green);
+	background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
+	
+	animation-name: spin; 
+	animation-duration: 3s; /* 3 seconds */
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+}
