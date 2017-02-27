@@ -5,9 +5,13 @@ const down = (store) => {
   if (store.getState().get('cur') !== null) {
       const state = store.getState();
       const cur = state.get('cur');
+      const curLevel = state.get('level');
       if (cur !== null) {
          const next = cur.down();
+         const nextLevel = curLevel.addLocationValue(next.location);
+         console.log("newlevel:" , nextLevel);
          store.dispatch(actions.movePlayer(next));
+         store.dispatch(actions.addValue(nextLevel));
       }
   }
 };

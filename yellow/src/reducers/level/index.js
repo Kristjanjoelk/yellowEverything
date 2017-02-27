@@ -1,22 +1,22 @@
 import * as reducerType from '../../unit/reducerType';
-import Player from '../../unit/player';
+import Level from '../../unit/level';
 
 const initState = (() => {
   const option = {
-    location: 1,
     gameWidth: 3,
-    gameHeight: 3
+    gameHeight: 3,
+    board: []
   };
-  return new Player(option);
+  return new Level(option);
 })();
 
-const cur = (state = initState, action) => {
+const level = (state = initState, action) => {
   switch (action.type) {
-    case reducerType.MOVE_PLAYER:
+    case reducerType.ADD_VALUE:
       return action.data;
     default:
       return state;
   }
 };
 
-export default cur;
+export default level;

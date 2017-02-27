@@ -12,6 +12,9 @@ const colors = {
 class Box extends Component {
     constructor(props) {
         super(props);
+        if(props.loc === 2) {
+            console.log(props);
+        }
         this.state = {
             loc: props.loc,
             height: props.height,
@@ -27,11 +30,13 @@ class Box extends Component {
 
 
     style() {
+        console.log("this.state.value: ", this.props.value);
+        var background = colors[this.props.value];
         return {
             "border": "1px solid black",
             "width": 900/this.props.width + "px",
             "height": 900/this.props.width + "px",
-            "background": colors[this.state.value] ? colors[this.state.value] : "blue",
+            "background": background,
             "float": "left"
         }
     }

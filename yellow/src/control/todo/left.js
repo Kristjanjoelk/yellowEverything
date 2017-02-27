@@ -5,9 +5,12 @@ const down = (store) => {
   if (store.getState().get('cur') !== null) {
       const state = store.getState();
       const cur = state.get('cur');
+      const curLevel = state.get('level');
       if (cur !== null) {
          const next = cur.left();
+         const nextLevel = curLevel.addLocationValue(next.location);
          store.dispatch(actions.movePlayer(next));
+         store.dispatch(actions.addValue(nextLevel));
       }
   }
 };
