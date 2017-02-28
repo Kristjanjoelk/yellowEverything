@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Board from './components/gameboard/Board';
+import Options from './components/options/Options';
 import { connect } from 'react-redux';
 import './App.css';
 
@@ -7,9 +8,10 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div>
-         <p> Hello world </p>
-         <Board width="10" height="10" cur={this.props.cur} level={this.props.level}/>
+        <div className="main-container">
+          <Options/>
+          <p> Yellow Everything! </p>
+          <Board width="10" height="10" cur={this.props.cur} level={this.props.level}/>
         </div>
     );
   }
