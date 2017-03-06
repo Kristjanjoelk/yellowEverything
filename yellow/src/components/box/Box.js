@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Player from '../player/Player';
+import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import './Box.css';
 
 // eslint-disable-next-line
@@ -20,6 +22,7 @@ class Box extends Component {
             height: props.height,
             width: props.width,
             value: props.value,
+            previousLoc: props.cur.option.previousLoc,
         };
     }
     
@@ -30,7 +33,6 @@ class Box extends Component {
 
 
     style() {
-        console.log("this.state.value: ", this.props.value);
         var background = colors[this.props.value];
         return {
             "border": "1px solid black",
@@ -44,8 +46,8 @@ class Box extends Component {
     render() {
         if(this.isCurrent()) {
             return (
-                <div className="currentContainer" style={this.style()}>
-                    <div className="current" id="current"></div>
+                <div style={this.style()}>
+                    <Player cur={this.props.cur} />
                 </div>
             );
         } else {
@@ -54,9 +56,14 @@ class Box extends Component {
                 </div>
             );
         }
+
     }
 }
 
+Box.propTypes = {
+  cur: React.PropTypes.object,
+  level: React.PropTypes.object
+};
 
 export default Box;
 
