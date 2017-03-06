@@ -2,10 +2,7 @@
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
 }
-.currentContainer {
-    display: table;
-    margin: 0 auto;
-}
+
 .current {
     margin-left: 45%;
     margin-top: 45%;

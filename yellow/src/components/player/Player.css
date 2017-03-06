@@ -1,0 +1,64 @@
+.player-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+#player {
+    margin-left: 45%;
+    margin-top: 45%;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+}
+
+.player {
+	width: 10px;
+	height: 10px;
+	
+	background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
+	background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, green);
+	background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
+	
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(60px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(-60px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes down {
+  0% {
+    transform: translateY(-60px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes long {
+   0%,100% { opacity: 1; }
+   50% { opacity: 0; }
+}
+
+@keyframes up {
+  0% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -15,6 +15,7 @@ class Player {
     // console.log("Inside player - inside down() - location: " + curr);
     return {
         location: curr,
+        previousLoc: this.option.location,
         gameWidth: this.option.gameWidth,
         gameHeight: this.option.gameHeight
     };
@@ -23,14 +24,15 @@ class Player {
     var h = this.option.gameHeight;
     var w = this.option.gameWidth;
     var curr = this.option.location;
-    if (curr < h) {
+    if (curr <= h) {
         curr += ((h - 1) * w);
     } else {
         curr -= h;
     }
-    // console.log("Inside player - inside up() - location: " + curr);
+    console.log("Inside player - inside up() - location: " + curr);
     return {
         location: curr,
+        previousLoc: this.option.location,
         gameWidth: this.option.gameWidth,
         gameHeight: this.option.gameHeight
     };
@@ -46,6 +48,7 @@ class Player {
     // console.log("Inside player - inside right() - location: " + curr);
     return {
         location: curr,
+        previousLoc: this.option.location,
         gameWidth: this.option.gameWidth,
         gameHeight: this.option.gameHeight
     };
@@ -61,6 +64,7 @@ class Player {
     // console.log("Inside player - inside left() - location: " + curr);
     return {
         location: curr,
+        previousLoc: this.option.location,
         gameWidth: this.option.gameWidth,
         gameHeight: this.option.gameHeight
 

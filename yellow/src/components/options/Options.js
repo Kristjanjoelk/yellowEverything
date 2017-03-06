@@ -30,7 +30,7 @@ class Options extends Component {
     render() {
         return (
             <div>
-                <label> Number of rows: <input value={this.state.rows} onChange={this.rowChange.bind(this)} /> </label>
+                <label> Number of rows: <input value={this.state.rows} onChange={this.rowChange.bind(this)} /> </label> <br/>
                 <label> Number of columns: <input value={this.state.columns} onChange={this.colChange.bind(this)} /> </label>
              </div>
         )

@@ -37,3 +37,4 @@ const keyUp = (e) => {
 
 document.addEventListener('keydown', keyDown, true);
 document.addEventListener('keyup', keyUp, true);
+
