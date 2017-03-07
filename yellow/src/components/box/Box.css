@@ -1,6 +1,28 @@
-@keyframes spin {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(360deg); }
+@keyframes fade-in-yellow {
+  0% {
+    background-color: grey;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
+
+@keyframes fade-in-red {
+  0% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+@keyframes fade-in-grey {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: grey;
+  }
 }
 
 .current {

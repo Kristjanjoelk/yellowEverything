@@ -5,7 +5,7 @@ class Player {
   down(level) {
     var h = level.option.gameHeight;
     var w = level.option.gameWidth;
-    var curr = level.option.location;
+    var curr = this.option.location;
     console.log("option", level);
     if (curr > ((h - 1) * w)) {
         curr -= (h - 1) * w;
@@ -15,7 +15,7 @@ class Player {
     // console.log("Inside player - inside down() - location: " + curr);
     return {
         location: curr,
-        previousLoc: level.option.location,
+        previousLoc: this.option.location,
         gameWidth: level.option.gameWidth,
         gameHeight: level.option.gameHeight
     };
@@ -23,7 +23,7 @@ class Player {
   up(level) {
     var h = level.option.gameHeight;
     var w = level.option.gameWidth;
-    var curr = level.option.location;
+    var curr = this.option.location;
     if (curr <= h) {
         curr += ((h - 1) * w);
     } else {
@@ -32,14 +32,14 @@ class Player {
     console.log("Inside player - inside up() - location: " + curr);
     return {
         location: curr,
-        previousLoc: level.option.location,
+        previousLoc: this.option.location,
         gameWidth: level.option.gameWidth,
         gameHeight: level.option.gameHeight
     };
   }
   right(level) {
     var w = level.option.gameWidth;
-    var curr = level.option.location;
+    var curr = this.option.location;
     if (curr % w === 0 && curr >= w) {
         curr -= (w-1);
     } else {
@@ -48,14 +48,14 @@ class Player {
     // console.log("Inside player - inside right() - location: " + curr);
     return {
         location: curr,
-        previousLoc: level.option.location,
+        previousLoc: this.option.location,
         gameWidth: level.option.gameWidth,
         gameHeight: level.option.gameHeight
     };
   }
   left(level) {
     var w = level.option.gameWidth;
-    var curr = level.option.location;
+    var curr = this.option.location;
     if (curr % w === 1 || curr === 1) {
         curr += (w-1);
     } else {
@@ -64,7 +64,7 @@ class Player {
     // console.log("Inside player - inside left() - location: " + curr);
     return {
         location: curr,
-        previousLoc: level.option.location,
+        previousLoc: this.option.location,
         gameWidth: level.option.gameWidth,
         gameHeight: level.option.gameHeight
 

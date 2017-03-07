@@ -10,16 +10,18 @@ const colors = {
   2: 'red'
 };
 
+const animName = {
+  0: 'fade-in-grey',
+  1: 'fade-in-yellow',
+  2: 'fade-in-red'
+};
+
 
 class Box extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loc: props.loc,
-            height: props.height,
-            width: props.width,
-            value: props.value,
-            previousLoc: props.cur.option.previousLoc,
         };
     }
     
@@ -36,7 +38,10 @@ class Box extends Component {
             "width": "60px",
             "height": "60px",
             "background": background,
-            "float": "left"
+            "float": "left",
+            "animationName": animName[this.props.value],
+            "animationDuration": "0.5s",
+            "animationIterationCount": 1,
         }
     }
 
