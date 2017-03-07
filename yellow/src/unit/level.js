@@ -1,14 +1,14 @@
 class Level {
   constructor(option) {
+    console.log("Recieved new Level options:", option);
     this.option = option;
-    this.option.gameWidth = option.gameWidth;
-    this.option.gameHeight = option.gameHeight;
     this.option.board = option.board.length > 0 ? option.board : this.initBoard(option);
   }
 
   initBoard(option) {
     var w = option.gameWidth;
     var h = option.gameHeight;
+    console.log("doing new board with h, w", h, w);
     var counter = 0;
     var result = [];
     for(var i = 1; i <= h; i++) {
@@ -21,6 +21,24 @@ class Level {
         }
     }
     return result;
+  }
+
+  rowChange(newRow) {
+    console.log("inside rowChange in unit/level", newRow);
+    return {
+        gameWidth: this.option.gameWidth,
+        gameHeight: newRow,
+        board: [],
+    };
+  }
+
+  colChange(newCol) {
+    console.log("inside colChange in unit/level", newCol);
+    return {
+        gameWidth: newCol,
+        gameHeight: this.option.gameHeight,
+        board: [],
+    };
   }
 
   addLocationValue(loc) {

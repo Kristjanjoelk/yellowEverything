@@ -5,29 +5,26 @@
 
 
 #player {
-    margin-left: 45%;
-    margin-top: 45%;
-	border-radius: 50%;
-	width: 10px;
-	height: 10px;
+
 }
 
 .player {
-	width: 10px;
-	height: 10px;
-	
-	background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
-	background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, green);
-	background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, green 100%, black 95%);
-	
+  margin-left: 45%;
+  margin-top: 45%;
+  /*border-radius: 50%; */
+  backface-visibility: hidden;
+  width: 10px;
+  height: 10px;
+	background: green;
 }
 
 @keyframes left {
   0% {
-    transform: translateX(60px);
+    
+    transform: translateZ(0) scale(1.0, 1.0) translateX(60px);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateZ(0) scale(1.0, 1.0) translateX(0px);
   }
 }
 

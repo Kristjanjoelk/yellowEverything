@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Board from './components/gameboard/Board';
 import Options from './components/options/Options';
 import { connect } from 'react-redux';
+import store from './store';
 import './App.css';
+import { subscribeRecord } from './unit';
 
+subscribeRecord(store); 
 
 class App extends Component {
   render() {
@@ -11,7 +14,7 @@ class App extends Component {
         <div className="main-container">
           <Options/>
           <p> Yellow Everything! </p>
-          <Board width="10" height="10" cur={this.props.cur} level={this.props.level}/>
+          <Board cur={this.props.cur} level={this.props.level}/>
         </div>
     );
   }

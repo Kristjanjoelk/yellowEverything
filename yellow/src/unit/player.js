@@ -2,11 +2,11 @@ class Player {
   constructor(option) {
     this.option = option;
   }
-  down() {
-    var h = this.option.gameHeight;
-    var w = this.option.gameWidth;
-    var curr = this.option.location;
-    // console.log("option", this.option);
+  down(level) {
+    var h = level.option.gameHeight;
+    var w = level.option.gameWidth;
+    var curr = level.option.location;
+    console.log("option", level);
     if (curr > ((h - 1) * w)) {
         curr -= (h - 1) * w;
     } else {
@@ -15,15 +15,15 @@ class Player {
     // console.log("Inside player - inside down() - location: " + curr);
     return {
         location: curr,
-        previousLoc: this.option.location,
-        gameWidth: this.option.gameWidth,
-        gameHeight: this.option.gameHeight
+        previousLoc: level.option.location,
+        gameWidth: level.option.gameWidth,
+        gameHeight: level.option.gameHeight
     };
   }
-  up() {
-    var h = this.option.gameHeight;
-    var w = this.option.gameWidth;
-    var curr = this.option.location;
+  up(level) {
+    var h = level.option.gameHeight;
+    var w = level.option.gameWidth;
+    var curr = level.option.location;
     if (curr <= h) {
         curr += ((h - 1) * w);
     } else {
@@ -32,14 +32,14 @@ class Player {
     console.log("Inside player - inside up() - location: " + curr);
     return {
         location: curr,
-        previousLoc: this.option.location,
-        gameWidth: this.option.gameWidth,
-        gameHeight: this.option.gameHeight
+        previousLoc: level.option.location,
+        gameWidth: level.option.gameWidth,
+        gameHeight: level.option.gameHeight
     };
   }
-  right() {
-    var w = this.option.gameWidth;
-    var curr = this.option.location;
+  right(level) {
+    var w = level.option.gameWidth;
+    var curr = level.option.location;
     if (curr % w === 0 && curr >= w) {
         curr -= (w-1);
     } else {
@@ -48,14 +48,14 @@ class Player {
     // console.log("Inside player - inside right() - location: " + curr);
     return {
         location: curr,
-        previousLoc: this.option.location,
-        gameWidth: this.option.gameWidth,
-        gameHeight: this.option.gameHeight
+        previousLoc: level.option.location,
+        gameWidth: level.option.gameWidth,
+        gameHeight: level.option.gameHeight
     };
   }
-  left() {
-    var w = this.option.gameWidth;
-    var curr = this.option.location;
+  left(level) {
+    var w = level.option.gameWidth;
+    var curr = level.option.location;
     if (curr % w === 1 || curr === 1) {
         curr += (w-1);
     } else {
@@ -64,9 +64,9 @@ class Player {
     // console.log("Inside player - inside left() - location: " + curr);
     return {
         location: curr,
-        previousLoc: this.option.location,
-        gameWidth: this.option.gameWidth,
-        gameHeight: this.option.gameHeight
+        previousLoc: level.option.location,
+        gameWidth: level.option.gameWidth,
+        gameHeight: level.option.gameHeight
 
     };
   }

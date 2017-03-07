@@ -19,9 +19,26 @@ function addValue(option) {
   };
 }
 
+function rowChange(option){
+    return {
+    type: reducerType.ROW_CHANGE,
+    data: new Level(option),
+  };
+};
+
+function colChange(option) {
+  console.log("inside colChange actions", option);
+  return {
+    type: reducerType.COL_CHANGE,
+    data: new Level(option),
+  };
+};
+
 
 export default {
   addValue,
   movePlayer,
-  keyboard
+  keyboard,
+  rowChange,
+  colChange,
 };
