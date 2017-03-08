@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Board from './components/gameboard/Board';
+import Keys from './components/keys/Keys';
 import Options from './components/options/Options';
 import { connect } from 'react-redux';
 import store from './store';
@@ -15,6 +16,7 @@ class App extends Component {
           <Options/>
           <p> Yellow Everything! </p>
           <Board cur={this.props.cur} level={this.props.level}/>
+          <Keys/>
         </div>
     );
   }
