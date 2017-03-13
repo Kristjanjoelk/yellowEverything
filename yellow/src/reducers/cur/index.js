@@ -1,6 +1,5 @@
 import * as reducerType from '../../unit/reducerType';
 import Player from '../../unit/player';
-import reset from './resetPlayer';
 
 const initState = (() => {
   const option = {

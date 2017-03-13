@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Board from './components/gameboard/Board';
 import Keys from './components/keys/Keys';
-import Options from './components/options/Options';
+// import Options from './components/options/Options';
 import { connect } from 'react-redux';
 import store from './store';
 import WinDialog from './components/windialog/Windialog';
