@@ -4,6 +4,7 @@ import down from './down';
 import up from './up';
 import colChange from './colChange';
 import rowChange from './rowChange';
+import reset from './reset';
 
 export default {
   left,
@@ -12,4 +13,5 @@ export default {
   right,
   colChange,
   rowChange,
+  reset,
 };

@@ -9,7 +9,8 @@ const down = (store) => {
       const curLevel = state.get('level');
       if (cur !== null) {
          const next = cur.down(curLevel);
-         const nextLevel = curLevel.addLocationValue(next.location);
+         const nextLevel = curLevel.addLocationValue(next);
+         if(nextLevel === -1) {return;}
          store.dispatch(actions.movePlayer(next, nextLevel));
          store.dispatch(actions.addValue(nextLevel));
       }

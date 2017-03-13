@@ -6,7 +6,9 @@ import './Box.css';
 const colors = {
   0: 'grey',
   1: 'yellow',
-  2: 'red'
+  2: 'red',
+  5: 'black',
+  6: 'grey'
 };
 
 const animName = {
@@ -25,15 +27,18 @@ class Box extends Component {
     }
     
     isCurrent() {
-        return this.state.loc === this.props.cur.option.location;
+        return this.state.loc.x === this.props.cur.option.location.x && this.state.loc.y === this.props.cur.option.location.y;
     }
 
 
-
     style() {
+        /* eslint-disable no-mixed-operators */
         var background = colors[this.props.value];
         return {
-            "border": "1px solid black",
+            "borderLeft": "1px solid black",
+            "borderRight": "1px solid black",
+            "borderTop": this.props.value === 6 && "1.2px solid red" || "1px solid black",
+            "borderBottom": this.props.value === 6 && "1.2px solid red" || "1px solid black",
             "width": "60px",
             "height": "60px",
             "background": background,

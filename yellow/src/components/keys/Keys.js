@@ -60,7 +60,7 @@ class Keys extends Component {
                         } else {
                             return <div key={i} className="keyboard-arrow"></div>
                         }
-                    }
+                    }.bind(this)
                     )}
             </div>
         );

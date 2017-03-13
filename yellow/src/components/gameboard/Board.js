@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import Box from '../box/Box';
 import immutable, { List } from 'immutable';
+import store from '../../store';
+import actions from '../../actions';
+import todo from '../../control/todo';
 import './Board.css';
 
 
@@ -22,24 +25,38 @@ class Board extends Component {
         }
     }
 
+    reset = () => {
+        // TODO : Send action to start a new game
+        todo.reset(store);
+    } 
+
     render() {
         // console.log("board: ", board);
+        let counter = 0;
         return (
             <div className="gameboard" >
                 <div style={this.style()} >
                     {
-                        this.props.level.option.board.map(function(key, i) {
-                            return(<Box 
-                                key = {i} 
-                                loc = {i + 1} 
-                                value = {this.props.level.option.board[i]} 
-                                level = {this.props.level} 
-                                cur = {this.props.cur}
-
-                            />)
+                        this.props.level.option.board.map(function(row, i) {
+                            let boxes = row.map(function(val, j) {
+                                let location = {x: j, y: i};
+                                counter++;
+                                return(<Box 
+                                    key = {counter} 
+                                    loc = {location} 
+                                    value = {val} 
+                                    level = {this.props.level} 
+                                    cur = {this.props.cur}
+                                />)
+                            }.bind(this))
+                            return boxes;
+                            console.log(boxes);
                         }.bind(this))
                     }
                 </div>
+                <div>Level: {this.props.level.option.currentLevel + 1}</div>
+                <div>Moves: {this.props.level.option.moveCounter}</div>
+                <button onClick={this.reset}>reset</button>
             </div>
         );
     }

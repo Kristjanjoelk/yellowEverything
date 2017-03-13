@@ -20,24 +20,18 @@ class Player extends Component {
 
     style() {
         // right = 0, down = 1, left = 2, up = 3, long = 4
-        var dir = 0;
-        // console.log("loc, previousLoc", this.state.loc, this.state.previousLoc);
-        if(this.state.loc > this.state.previousLoc) {
-            
+        var dir = 4;
+        if(this.props.cur.option.location.x - 1 === this.props.cur.option.previousLoc.x) {
             dir = 0;
-            if(this.state.loc - this.state.previousLoc > 1) {
-                dir = 1;
-            }
         }
-        if(this.state.loc < this.state.previousLoc) {
+        if(this.props.cur.option.location.x + 1 === this.props.cur.option.previousLoc.x) {
             dir = 2;
-            if(this.state.loc - this.state.previousLoc < -1) {
-                dir = 3;
-            }
         }
-        // +- gameWidth/gameHeight fix plz
-        if(this.state.loc - 2 === this.state.previousLoc || this.state.loc + 2 === this.state.previousLoc) {
-            dir = 4
+        if(this.props.cur.option.location.y - 1 === this.props.cur.option.previousLoc.y) {
+            dir = 1;
+        }
+        if(this.props.cur.option.location.y + 1 === this.props.cur.option.previousLoc.y) {
+            dir = 3;
         }
 
         return {

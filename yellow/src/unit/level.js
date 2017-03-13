@@ -12,7 +12,8 @@ class Level {
     let level = gameLevels[this.option.currentLevel];
     this.option.gameWidth = level.width;
     this.option.gameHeight = level.height;
-    this.option.board = level.board.slice();
+    this.option.board = [...level.board];
+    this.option.solution = level.solution;
   }
 
   rowChange(newRow) {
@@ -22,7 +23,7 @@ class Level {
         gameWidth: this.option.gameWidth,
         gameHeight: newRow,
         board: [],
-        winState: false,
+        winState: 0,
         moveCounter: 0
     };
   }
@@ -34,33 +35,53 @@ class Level {
         gameWidth: newCol,
         gameHeight: this.option.gameHeight,
         board: [],
-        winState: false,
+        winState: 0,
         moveCounter: 0
     };
   }
 
   checkBoardState() {
-    let flag = true;
-    let size = this.option.gameWidth * this.option.gameHeight;
-    for(let i = 0; i < size; i++) {
-      if(this.option.board[i] !== 1) {
-        flag = false;
-        break;
-      }
+    let flag = 1;
+    // let size = this.option.gameWidth * this.option.gameHeight;
+    for(let i = 0; i < this.option.gameHeight; i++) {
+      for(let j = 0; j < this.option.gameWidth; j++)
+        if(this.option.board[i][j] !== 1) {
+          if(this.option.board[i][j] === 5) { continue; }
+            flag = 0;
+            break;
+        }
     }
-    if(flag) {
-      console.log("DING DING DING! win");
+    console.log(this.option.moveCounter, this.option.solution.max);
+    if(this.option.moveCounter + 1 >= this.option.solution.max) {
+      console.log("Ohhoo.. max moves reached");
+      return 3;
     }
+
     return flag;
   }
   
+  isMoveValid(loc, prevLoc) {
+    if(this.option.board[loc.y][loc.x] === 6) {
+      //return prevLoc - loc < this.option.gameWidth && prevLoc - loc > -this.option.gameWidth;
+      return loc.y === prevLoc.y
+    }
+    return this.option.board[loc.y][loc.x] !== 5;
+  }
 
-  addLocationValue(loc) {
-      loc -= 1;
+  addLocationValue(player) {
+      let loc = player.location;
+      let prevLoc = player.previousLoc;
+      if(!this.isMoveValid(loc, prevLoc)) {
+        return -1;
+      }
     //   console.log("Inside addLocationValue", loc);
     //   console.log("the board", this.option.board);
       var tempBoard = this.option.board;
-      tempBoard[loc] = this.option.board[loc] < 2 ? ++this.option.board[loc] : 0;
+      if(this.option.board[loc.y][loc.x] === 6) {
+        this.option.board[loc.y][loc.x] = 1
+      } else {
+        tempBoard[loc.y][loc.x] = this.option.board[loc.y][loc.x] < 2 ? ++this.option.board[loc.y][loc.x] : 0;
+      }
     //   console.log("returning new array", tempBoard);
       return {
           currentLevel: this.option.currentLevel,
@@ -68,34 +89,37 @@ class Level {
           gameHeight: this.option.gameHeight,
           board: tempBoard,
           winState: this.checkBoardState(),
-          moveCounter: ++this.option.moveCounter
+          moveCounter: ++this.option.moveCounter,
+          solution: this.option.solution
       }
   }
 
   reset() {
-    let thisLevel = gameLevels[this.option.currentLevel];
-    console.log("recived signal to reset", thisLevel);
+    let sameLevel = gameLevels[this.option.currentLevel];
+    // console.log("recived signal to reset");
     return {
           currentLevel: this.option.currentLevel,
           gameWidth: this.option.gameWidth,
           gameHeight: this.option.gameHeight,
-          board: thisLevel.board.slice(),
-          winState: false,
-          moveCounter: 0
+          board: [...sameLevel.board],
+          winState: 0,
+          moveCounter: 0,
+          solution: sameLevel.solution,
     }
   }
 
   getNextLevel() {
     
-    let nextLevel = gameLevels[++this.option.currentLevel];
-    console.log("recived signal to getNextLevel", nextLevel);
+    let nextLevel = gameLevels[this.option.currentLevel + 1];
+    // console.log("recived signal to getNextLevel", nextLevel);
         return {
-          currentLevel: this.option.currentLevel,
+          currentLevel: this.option.currentLevel + 1,
           gameWidth: nextLevel.width,
           gameHeight: nextLevel.height,
-          board: nextLevel.board,
-          winState: false,
-          moveCounter: 0
+          board: [...nextLevel.board],
+          winState: 0,
+          moveCounter: 0,
+          solution: nextLevel.solution,
       }
   }
 }

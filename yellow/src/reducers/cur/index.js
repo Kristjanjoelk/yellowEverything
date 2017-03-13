@@ -3,8 +3,14 @@ import Player from '../../unit/player';
 
 const initState = (() => {
   const option = {
-    location: 1,
-    previousLoc: 1,
+    location: {
+      x: 0,
+      y: 0,
+    },
+    previousLoc: {
+      x: 0,
+      y: 0,
+    },
     gameWidth: 3,
     gameHeight: 3
   };
