@@ -14,7 +14,6 @@ class App extends Component {
   render() {
     return (
         <div className="main-container">
-          <Options/>
           <p> Yellow Everything! </p>
           <Board cur={this.props.cur} level={this.props.level} />
           <Keys/>

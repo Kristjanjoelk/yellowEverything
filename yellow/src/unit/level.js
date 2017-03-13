@@ -12,7 +12,7 @@ class Level {
     let level = gameLevels[this.option.currentLevel];
     this.option.gameWidth = level.width;
     this.option.gameHeight = level.height;
-    this.option.board = level.board;
+    this.option.board = level.board.slice();
   }
 
   rowChange(newRow) {
@@ -70,6 +70,19 @@ class Level {
           winState: this.checkBoardState(),
           moveCounter: ++this.option.moveCounter
       }
+  }
+
+  reset() {
+    let thisLevel = gameLevels[this.option.currentLevel];
+    console.log("recived signal to reset", thisLevel);
+    return {
+          currentLevel: this.option.currentLevel,
+          gameWidth: this.option.gameWidth,
+          gameHeight: this.option.gameHeight,
+          board: thisLevel.board.slice(),
+          winState: false,
+          moveCounter: 0
+    }
   }
 
   getNextLevel() {

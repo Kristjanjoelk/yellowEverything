@@ -4,8 +4,16 @@ import store from '../../store';
 import actions from '../../actions';
 
 class WinDialog extends React.Component {
-
-    handleClick = () => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: props.level.option.winState,
+        }
+    }
+    shouldComponentUpdate () {
+        return this.props.value !== this.props.level.option.winState;
+    }
+    gotoNext = () => {
         // TODO : Send action to start a new game
         const state = store.getState();
         const curLevel = state.get('level');
@@ -13,6 +21,17 @@ class WinDialog extends React.Component {
         const nextLevel = curLevel.getNextLevel();
         const nextCur = cur.resetPlayer(nextLevel);
         store.dispatch(actions.getNextLevel(nextLevel));
+        store.dispatch(actions.resetPlayer(nextCur));
+    } 
+
+    reset = () => {
+        // TODO : Send action to start a new game
+        const state = store.getState();
+        const curLevel = state.get('level');
+        const cur = state.get('cur');
+        const nextLevel = curLevel.reset();
+        const nextCur = cur.resetPlayer(nextLevel);
+        store.dispatch(actions.resetLevel(nextLevel));
         store.dispatch(actions.resetPlayer(nextCur));
     } 
     render() {
@@ -23,8 +42,8 @@ class WinDialog extends React.Component {
                 <ModalDialog>
                 <h1>You won!</h1>
                 <p>With {this.props.level.option.moveCounter} moves</p>
-                <button>Try again</button>
-                <button onClick={this.handleClick} >Next level</button>
+                <button onClick={this.reset} >Try again</button>
+                <button onClick={this.gotoNext} >Next level</button>
                 </ModalDialog>
             </ModalContainer>
             }

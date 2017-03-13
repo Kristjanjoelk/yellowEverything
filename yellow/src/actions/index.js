@@ -51,6 +51,13 @@ function resetPlayer(option) {
   };
 };
 
+function resetLevel(option) {
+  console.log("inside resetPlayer actions", option);
+  return {
+    type: reducerType.RESET_LEVEL,
+    data: new Level(option),
+  };
+};
 
 
 export default {
@@ -60,5 +67,6 @@ export default {
   rowChange,
   colChange,
   getNextLevel,
-  resetPlayer
+  resetPlayer,
+  resetLevel
 };

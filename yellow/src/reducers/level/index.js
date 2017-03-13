@@ -36,6 +36,8 @@ const level = (state = initState, action) => {
         return action.data;
     case reducerType.NEXT_LEVEL:
         return action.data;
+    case reducerType.RESET_LEVEL:
+        return action.data;
     default:
       return state;
   }
