@@ -19,14 +19,14 @@ class Options extends Component {
         this.setState({
             rows: e.target.value,
         })
-        todo['rowChange'].rowChange(store, parseInt(e.target.value));
+        todo['rowChange'].rowChange(store, parseInt(e.target.value, 10));
     }
     
     colChange(e) {
         this.setState({
             columns: e.target.value,
         })
-        todo['colChange'].colChange(store, parseInt(e.target.value));
+        todo['colChange'].colChange(store, parseInt(e.target.value, 10));
     }
 
     render() {

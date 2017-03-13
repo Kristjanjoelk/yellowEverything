@@ -15,10 +15,6 @@ const thing = {
   3: 'down',
 };
 
-
-const mappedKeys = Object.keys(thing).map(e => parseInt(e, 10));
-
-
 class Keys extends Component {
     constructor() {
         super();
@@ -45,24 +41,24 @@ class Keys extends Component {
     }
 
     render() {
-        const up = <UpArrow className="keyboard-arrow" id="up" onClick={() => this.handleUp()}/>;
-        const left = <LeftArrow className="keyboard-arrow" id="left" onClick={() => this.handleLeft()}/>;
-        const down = <DownArrow className="keyboard-arrow" id="down" onClick={() => this.handleDown()}/>;
-        const right = <RightArrow className="keyboard-arrow" id="right" onClick={() => this.handleRight()}/>;
+        // const up = 
+        // const left = <LeftArrow className="keyboard-arrow" id="left" onClick={() => this.handleLeft()}/>;
+        // const down = <DownArrow className="keyboard-arrow" id="down" onClick={() => this.handleDown()}/>;
+        // const right = <RightArrow className="keyboard-arrow" id="right" onClick={() => this.handleRight()}/>;
         return (
             <div className="arrow-container">
                 {
                     this.state.board.map(function(key, i) {
                         if(i === 1) {
-                            return up;
+                            return <UpArrow key={i} className="keyboard-arrow" id="up" onClick={() => this.handleUp()}/>;
                         } if(i === 3) {
-                            return left;
+                            return <LeftArrow key={i} className="keyboard-arrow" id="left" onClick={() => this.handleLeft()}/>;
                         } if(i === 5) {
-                            return right;
+                            return <RightArrow key={i} className="keyboard-arrow" id="right" onClick={() => this.handleRight()}/>;
                         } if(i === 7) {
-                            return down;
+                            return <DownArrow key={i} className="keyboard-arrow" id="down" onClick={() => this.handleDown()}/>;
                         } else {
-                            return <div className="keyboard-arrow"></div>
+                            return <div key={i} className="keyboard-arrow"></div>
                         }
                     }
                     )}

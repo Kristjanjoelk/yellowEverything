@@ -6,7 +6,7 @@ class Player {
     var h = level.option.gameHeight;
     var w = level.option.gameWidth;
     var curr = this.option.location;
-    console.log("option", level);
+    // console.log("option", level);
     if (curr > ((h - 1) * w)) {
         curr -= (h - 1) * w;
     } else {
@@ -29,7 +29,7 @@ class Player {
     } else {
         curr -= h;
     }
-    console.log("Inside player - inside up() - location: " + curr);
+    // console.log("Inside player - inside up() - location: " + curr);
     return {
         location: curr,
         previousLoc: this.option.location,
@@ -68,6 +68,14 @@ class Player {
         gameWidth: level.option.gameWidth,
         gameHeight: level.option.gameHeight
 
+    };
+  }
+  resetPlayer(option) {
+      return {
+        location: 1,
+        previousLoc: 1,
+        gameWidth: option.gameWidth,
+        gameHeight: option.gameHeight
     };
   }
 }

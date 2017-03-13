@@ -1,6 +1,5 @@
 import * as reducerType from '../../unit/reducerType';
 import Player from '../../unit/player';
-import reset from './resetPlayer';
 
 const initState = (() => {
   const option = {
@@ -12,10 +11,9 @@ const initState = (() => {
   return new Player(option);
 })();
 
-const cur = (state = initState, action) => {
+
+const reset = (state = initState, action) => {
   switch (action.type) {
-    case reducerType.MOVE_PLAYER:
-      return action.data;
     case reducerType.RESET_PLAYER:
       return action.data;
     default:
@@ -23,4 +21,4 @@ const cur = (state = initState, action) => {
   }
 };
 
-export default cur;
+export default reset;

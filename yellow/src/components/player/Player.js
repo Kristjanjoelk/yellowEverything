@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import './Player.css';
 
 const directions = {
@@ -22,7 +21,7 @@ class Player extends Component {
     style() {
         // right = 0, down = 1, left = 2, up = 3, long = 4
         var dir = 0;
-        console.log("loc, previousLoc", this.state.loc, this.state.previousLoc);
+        // console.log("loc, previousLoc", this.state.loc, this.state.previousLoc);
         if(this.state.loc > this.state.previousLoc) {
             
             dir = 0;

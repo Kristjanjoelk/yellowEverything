@@ -4,6 +4,7 @@ import Keys from './components/keys/Keys';
 import Options from './components/options/Options';
 import { connect } from 'react-redux';
 import store from './store';
+import WinDialog from './components/windialog/Windialog';
 import './App.css';
 import { subscribeRecord } from './unit';
 
@@ -15,8 +16,9 @@ class App extends Component {
         <div className="main-container">
           <Options/>
           <p> Yellow Everything! </p>
-          <Board cur={this.props.cur} level={this.props.level}/>
+          <Board cur={this.props.cur} level={this.props.level} />
           <Keys/>
+          <WinDialog cur={this.props.cur} level={this.props.level} />
         </div>
     );
   }

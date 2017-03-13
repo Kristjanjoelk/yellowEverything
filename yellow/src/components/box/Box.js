@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Player from '../player/Player';
-import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import './Box.css';
 
 // eslint-disable-next-line

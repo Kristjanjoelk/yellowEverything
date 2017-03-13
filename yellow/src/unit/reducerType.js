@@ -6,3 +6,5 @@ export const MOVE_PLAYER = 'MOVE_PLAYER';
 export const ADD_VALUE = 'ADD_VALUE';
 export const COL_CHANGE = 'COL_CHANGE';
 export const ROW_CHANGE = 'ROW_CHANGE';
+export const NEXT_LEVEL = 'NEXT_LEVEL';
+export const RESET_PLAYER = 'RESET_PLAYER';

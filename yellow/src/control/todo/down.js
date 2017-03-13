@@ -1,7 +1,7 @@
 import actions from '../../actions';
 
 const down = (store) => {
-  console.log(store);
+  // console.log(store);
   store.dispatch(actions.keyboard.down(true));
   if (store.getState().get('cur') !== null) {
       const state = store.getState();

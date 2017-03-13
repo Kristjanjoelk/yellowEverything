@@ -12,30 +12,8 @@ class Board extends Component {
         this.state = {};
     }
 
-    // componentWillReceiveProps(nextProps = {}) {
-    //     console.log("Board componentWillReceiveProps", nextProps);
-
-    // }
-
-    // shouldComponentUpdate(nextProps = {}) { 
-    //     const props = this.props;
-    //     return !(
-    //         immutable.is(nextProps.board, props.board) &&
-    //         immutable.is((nextProps.level.option.gameWidth && nextProps.level.option.gameHeight))
-    //         )
-    // }
-
-    // shouldComponentUpdate({ level }) {
-    //     return !immutable.is(level, this.props.level);
-    // }
-
-    // getResult(props = this.props) {
-    //     console.log("getResult", this.props);
-    //     return props.level.board;
-    // }
-
     style() {
-        console.log("style() board, this.props.level", this.props.level);
+        // console.log("style() board, this.props.level", this.props.level);
         return {
             "width": (this.props.level.option.gameWidth * 70) + "px",
             "height": (this.props.level.option.gameHeight * 70) + "px",
@@ -53,8 +31,8 @@ class Board extends Component {
                         this.props.level.option.board.map(function(key, i) {
                             return(<Box 
                                 key = {i} 
-                                loc = {key.loc} 
-                                value = {this.props.level.option.board[i].value} 
+                                loc = {i + 1} 
+                                value = {this.props.level.option.board[i]} 
                                 level = {this.props.level} 
                                 cur = {this.props.cur}
 

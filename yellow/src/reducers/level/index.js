@@ -16,9 +16,12 @@ import Level from '../../unit/level';
 
 const initState = (() => {
   const option = {
+    currentLevel: 0,
     gameWidth: 3,
     gameHeight: 3,
-    board: []
+    board: [],
+    winState: false,
+    moveCounter: 0,
   };
   return new Level(option);
 })();
@@ -30,6 +33,8 @@ const level = (state = initState, action) => {
     case reducerType.ROW_CHANGE:
         return action.data;
     case reducerType.COL_CHANGE:
+        return action.data;
+    case reducerType.NEXT_LEVEL:
         return action.data;
     default:
       return state;
