@@ -1,5 +1,7 @@
 import actions from '../../actions';
 
+// Resets current level 
+
 const reset = (store) => {
     const state = store.getState();
     const curLevel = state.get('level');

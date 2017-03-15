@@ -12,7 +12,9 @@ class Level {
     let level = gameLevels[this.option.currentLevel];
     this.option.gameWidth = level.width;
     this.option.gameHeight = level.height;
-    this.option.board = [...level.board];
+    this.option.board = level.board.map(function(arr) {
+        return arr.slice();
+    });;
     this.option.solution = level.solution;
   }
 
@@ -101,7 +103,9 @@ class Level {
           currentLevel: this.option.currentLevel,
           gameWidth: this.option.gameWidth,
           gameHeight: this.option.gameHeight,
-          board: [...sameLevel.board],
+          board: sameLevel.board.map(function(arr) {
+            return arr.slice();
+          }),
           winState: 0,
           moveCounter: 0,
           solution: sameLevel.solution,
@@ -109,14 +113,16 @@ class Level {
   }
 
   getNextLevel() {
-    
+
     let nextLevel = gameLevels[this.option.currentLevel + 1];
     // console.log("recived signal to getNextLevel", nextLevel);
         return {
           currentLevel: this.option.currentLevel + 1,
           gameWidth: nextLevel.width,
           gameHeight: nextLevel.height,
-          board: [...nextLevel.board],
+          board: nextLevel.board.map(function(arr) {
+            return arr.slice();
+          }),
           winState: 0,
           moveCounter: 0,
           solution: nextLevel.solution,

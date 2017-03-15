@@ -25,11 +25,6 @@ class Board extends Component {
         }
     }
 
-    reset = () => {
-        // TODO : Send action to start a new game
-        todo.reset(store);
-    } 
-
     render() {
         // console.log("board: ", board);
         let counter = 0;
@@ -56,7 +51,6 @@ class Board extends Component {
                 </div>
                 <div>Level: {this.props.level.option.currentLevel + 1}</div>
                 <div>Moves: {this.props.level.option.moveCounter}</div>
-                <button onClick={this.reset}>reset</button>
             </div>
         );
     }

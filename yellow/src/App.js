@@ -5,6 +5,7 @@ import Keys from './components/keys/Keys';
 import { connect } from 'react-redux';
 import store from './store';
 import WinDialog from './components/windialog/Windialog';
+import DialogButton from './components/solutionDialog/DialogButton';
 import './App.css';
 import { subscribeRecord } from './unit';
 
@@ -18,6 +19,7 @@ class App extends Component {
           <Board cur={this.props.cur} level={this.props.level} />
           <Keys/>
           <WinDialog cur={this.props.cur} level={this.props.level} />
+          <DialogButton level={this.props.level} />
         </div>
     );
   }

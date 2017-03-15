@@ -37,8 +37,8 @@ class Box extends Component {
         return {
             "borderLeft": "1px solid black",
             "borderRight": "1px solid black",
-            "borderTop": this.props.value === 6 && "1.2px solid red" || "1px solid black",
-            "borderBottom": this.props.value === 6 && "1.2px solid red" || "1px solid black",
+            "borderTop": this.props.value === 6 && "1px solid red" || "1px solid black",
+            "borderBottom": this.props.value === 6 && "1px solid red" || "1px solid black",
             "width": "60px",
             "height": "60px",
             "background": background,

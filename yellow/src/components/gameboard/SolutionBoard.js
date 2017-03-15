@@ -8,9 +8,36 @@ class SolutionBoard extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            sequenceCounter: 0,
+            sequence: props.level.option.solution.solutionSequence.slice(),
+            solution: props.level.option.solution,
+            board: props.level.option.solution.board.map(function(arr) {
+                return arr.slice();
+            }),
+        };
     }
 
+
+    nextSequence = () => {
+        let pos = this.state.sequence[this.state.sequenceCounter + 1];
+        var tempBoard = this.state.board;
+
+        if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] === 1 && this.state.sequenceCounter === 0) {
+            console.log("AWASDAGF", this.props.level.option.solution);
+            tempBoard = this.props.level.option.solution.board.map(function(arr) {
+                return arr.slice();
+            });
+        }
+        tempBoard[parseInt(pos.y)][parseInt(pos.x)] += 1;
+        if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] > 2) {
+            tempBoard[parseInt(pos.y)][parseInt(pos.x)] = 0;
+        }
+        this.setState({
+            sequenceCounter: ++this.state.sequenceCounter,
+            board: tempBoard
+        });
+    }
     style() {
         // console.log("style() board, this.props.level", this.props.level);
         return {
@@ -21,32 +48,51 @@ class SolutionBoard extends Component {
         }
     }
     render() {
-        // console.log("board: ", board);
+        console.log("board: ", this.state.solution);
+        let counter = 0;
+        let prevCounter = this.state.sequenceCounter > 0 ? this.state.sequenceCounter - 1 : this.state.sequenceCounter;
+        let currentLocation = {
+            option: {
+                location: {
+                    x: parseInt(this.props.level.option.solution.solutionSequence[this.state.sequenceCounter].x),
+                    y: parseInt(this.props.level.option.solution.solutionSequence[this.state.sequenceCounter].y)
+                },
+                previousLoc: {
+                    x: parseInt(this.props.level.option.solution.solutionSequence[prevCounter].x),
+                    y: parseInt(this.props.level.option.solution.solutionSequence[prevCounter].y)
+                }
+            }
+        }
         return (
             <div className="gameboard" >
                 <div style={this.style()} >
                     {
-                        this.props.level.option.board.map(function(key, i) {
-                            return(<Box 
-                                key = {i} 
-                                loc = {i + 1} 
-                                value = {this.props.level.option.board[i]} 
-                                level = {this.props.level} 
-                                cur = {this.props.cur}
-
-                            />)
+                        this.state.board.map(function(row, i) {
+                            let boxes = row.map(function(val, j) {
+                                let location = {x: j, y: i};
+                                counter++;
+                                return(<Box 
+                                    key = {counter} 
+                                    loc = {location} 
+                                    value = {val} 
+                                    level = {this.props.level} 
+                                    cur = {currentLocation}
+                                />)
+                            }.bind(this))
+                            
+                            console.log(boxes);
+                            return boxes;
                         }.bind(this))
                     }
                 </div>
                 <div>Level: {this.props.level.option.currentLevel + 1}</div>
-                <div>Moves: {this.props.level.option.moveCounter}</div>
+                <button onClick={this.nextSequence} disabled={(this.props.level.option.solution.solutionSequence.length -1 === this.state.sequenceCounter)}>Next move: </button>
             </div>
         );
     }
 }
 
 SolutionBoard.propTypes = {
-  cur: React.PropTypes.object.isRequired,
   level: React.PropTypes.object.isRequired
 };
 

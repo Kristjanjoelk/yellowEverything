@@ -9,6 +9,7 @@ const down = (store) => {
       const curLevel = state.get('level');
       if (cur !== null) {
          const next = cur.down(curLevel);
+         console.log("before adding value in down", curLevel);
          const nextLevel = curLevel.addLocationValue(next);
          if(nextLevel === -1) {return;}
          store.dispatch(actions.movePlayer(next, nextLevel));

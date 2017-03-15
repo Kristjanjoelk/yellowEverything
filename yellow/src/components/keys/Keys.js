@@ -39,6 +39,11 @@ class Keys extends Component {
     handleDown() {
         todo[thing[3]].down(store);
     }
+    reset = () => {
+        // TODO : Send action to start a new game
+        todo.reset(store);
+    } 
+
 
     render() {
         // const up = 
@@ -62,6 +67,7 @@ class Keys extends Component {
                         }
                     }.bind(this)
                     )}
+                <button className="reset-button" onClick={this.reset}>reset</button>
             </div>
         );
     }

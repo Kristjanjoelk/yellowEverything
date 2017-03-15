@@ -44,7 +44,7 @@ function getNextLevel(option) {
 
 
 function resetPlayer(option) {
-  console.log("inside resetPlayer actions", option);
+  // console.log("inside resetPlayer actions", option);
   return {
     type: reducerType.RESET_PLAYER,
     data: option.reset === true ? null : new Player(option),
@@ -52,7 +52,7 @@ function resetPlayer(option) {
 };
 
 function resetLevel(option) {
-  console.log("inside resetPlayer actions", option);
+  // console.log("inside resetLevel actions", option);
   return {
     type: reducerType.RESET_LEVEL,
     data: new Level(option),
