@@ -23,6 +23,8 @@ const cur = (state = initState, action) => {
       return action.data;
     case reducerType.RESET_PLAYER:
       return action.data;
+    case reducerType.INVALID_MOVE:
+      return action.data;
     default:
       return state;
   }

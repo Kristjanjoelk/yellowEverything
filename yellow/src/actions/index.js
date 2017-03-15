@@ -59,6 +59,14 @@ function resetLevel(option) {
   };
 };
 
+function invalidMove(option) {
+  // console.log("inside resetLevel actions", option);
+  return {
+    type: reducerType.INVALID_MOVE,
+    data: new Player(option),
+  };
+};
+
 
 export default {
   addValue,
@@ -68,5 +76,6 @@ export default {
   colChange,
   getNextLevel,
   resetPlayer,
-  resetLevel
+  resetLevel,
+  invalidMove
 };

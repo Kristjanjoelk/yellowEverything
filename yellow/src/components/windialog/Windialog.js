@@ -3,7 +3,8 @@ import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 import store from '../../store';
 import actions from '../../actions';
 import todo from '../../control/todo';
-
+import Star from 'react-icons/lib/fa/star';
+import Ostar from 'react-icons/lib/fa/star-o';
 class WinDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -36,7 +37,22 @@ class WinDialog extends React.Component {
             (this.props.level.option.winState === 1 || this.props.level.option.winState === 3) &&
             <ModalContainer>
                 <ModalDialog>
-                <h1>{message}</h1>
+                <h1>{message}</h1>      
+                {this.props.level.option.moveCounter <= this.props.level.option.solution.firstPlace &&  this.props.level.option.winState &&
+                    <div>
+                         Excellent! <Star/><Star/><Star/>
+                    </div>
+                }
+                {this.props.level.option.solution.thirdPlace[this.props.level.option.moveCounter] && this.props.level.option.winState && 
+                    <div>
+                         Nice! <Star/><Star/><Ostar/>
+                    </div>
+                }
+                {this.props.level.option.solution.secondPlace[this.props.level.option.moveCounter] && this.props.level.option.winState &&
+                    <div>
+                         Ok! <Star/><Ostar/><Ostar/>
+                    </div>
+                }
                 <p>With {this.props.level.option.moveCounter} moves</p>
                 <button onClick={this.reset} >Try again</button>
                 <button onClick={this.gotoNext} disabled={!(this.props.level.option.winState === 1)}>Next level</button>

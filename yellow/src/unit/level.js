@@ -53,7 +53,6 @@ class Level {
             break;
         }
     }
-    console.log(this.option.moveCounter, this.option.solution.max);
     if(this.option.moveCounter + 1 >= this.option.solution.max) {
       console.log("Ohhoo.. max moves reached");
       return 3;
@@ -80,7 +79,7 @@ class Level {
     //   console.log("the board", this.option.board);
       var tempBoard = this.option.board;
       if(this.option.board[loc.y][loc.x] === 6) {
-        this.option.board[loc.y][loc.x] = 1
+        this.option.board[loc.y][loc.x] = 0
       } else {
         tempBoard[loc.y][loc.x] = this.option.board[loc.y][loc.x] < 2 ? ++this.option.board[loc.y][loc.x] : 0;
       }

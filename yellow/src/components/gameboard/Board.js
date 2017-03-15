@@ -9,12 +9,6 @@ import './Board.css';
 
 
 class Board extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     style() {
         // console.log("style() board, this.props.level", this.props.level);
         return {
@@ -29,7 +23,7 @@ class Board extends Component {
         // console.log("board: ", board);
         let counter = 0;
         return (
-            <div className="gameboard" >
+            <div className={this.props.cur.option.invalidMove ? "gameboard-shake" : "gameboard"} >
                 <div style={this.style()} >
                     {
                         this.props.level.option.board.map(function(row, i) {
@@ -42,10 +36,10 @@ class Board extends Component {
                                     value = {val} 
                                     level = {this.props.level} 
                                     cur = {this.props.cur}
+                                    hasPlayer = {location.x === this.props.cur.option.location.x && location.y === this.props.cur.option.location.y}
                                 />)
                             }.bind(this))
                             return boxes;
-                            console.log(boxes);
                         }.bind(this))
                     }
                 </div>

@@ -24,7 +24,6 @@ class SolutionBoard extends Component {
         var tempBoard = this.state.board;
 
         if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] === 1 && this.state.sequenceCounter === 0) {
-            console.log("AWASDAGF", this.props.level.option.solution);
             tempBoard = this.props.level.option.solution.board.map(function(arr) {
                 return arr.slice();
             });
@@ -77,6 +76,7 @@ class SolutionBoard extends Component {
                                     value = {val} 
                                     level = {this.props.level} 
                                     cur = {currentLocation}
+                                    hasPlayer = {location.x === currentLocation.option.location.x && location.y === currentLocation.option.location.y}
                                 />)
                             }.bind(this))
                             

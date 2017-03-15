@@ -19,18 +19,6 @@ const animName = {
 
 
 class Box extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loc: props.loc,
-        };
-    }
-    
-    isCurrent() {
-        return this.state.loc.x === this.props.cur.option.location.x && this.state.loc.y === this.props.cur.option.location.y;
-    }
-
-
     style() {
         /* eslint-disable no-mixed-operators */
         var background = colors[this.props.value];
@@ -50,25 +38,20 @@ class Box extends Component {
     }
 
     render() {
-        if(this.isCurrent()) {
-            return (
-                <div style={this.style()}>
-                    <Player cur={this.props.cur} />
-                </div>
-            );
-        } else {
-            return (
-                <div style={this.style()}>
-                </div>
-            );
-        }
-
-    }
+        return (
+            <div style={this.style()}>
+                {
+                    this.props.hasPlayer && <Player cur={this.props.cur} />
+                }
+            </div>
+        );
+    } 
 }
 
 Box.propTypes = {
   cur: React.PropTypes.object,
-  level: React.PropTypes.object
+  level: React.PropTypes.object,
+  hasPlayer: React.PropTypes.bool.isRequired
 };
 
 export default Box;

@@ -1,6 +1,17 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import rootReducer from '../reducers';
 
-const store = createStore(rootReducer, window.devToolsExtension && window.devToolsExtension());
+// eslint-disable-next-line
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+    rootReducer, 
+    applyMiddleware(
+      thunkMiddleware,
+      //loggerMiddleware
+    )
+);
 
 export default store;

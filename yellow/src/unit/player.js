@@ -28,12 +28,6 @@ class Player {
   }
   up(level) {
     let h = level.option.gameHeight;
-    // var curr = this.option.location;
-    // if (curr <= h) {
-    //     curr += ((h - 1) * w);
-    // } else {
-    //     curr -= h;
-    // }
     let curr = Object.assign({}, this.option.location);
     if(curr.y > 0) {
         curr.y--;
@@ -51,11 +45,6 @@ class Player {
   }
   right(level) {
     let w = level.option.gameWidth;
-    // if (curr % w === 0 && curr >= w) {
-    //     curr -= (w-1);
-    // } else {
-    //     curr++;
-    // }
     let curr = Object.assign({}, this.option.location);
     if(curr.x < (w - 1)) {
         curr.x++;
@@ -73,12 +62,6 @@ class Player {
   }
   left(level) {
     let w = level.option.gameWidth;
-    // if (curr % w === 1 || curr === 1) {
-    //     curr += (w-1);
-    // } else {
-    //     curr--;
-    // }
-
     let curr = Object.assign({}, this.option.location);
     if(curr.x > 0) {
         curr.x--;
@@ -107,6 +90,16 @@ class Player {
         },
         gameWidth: option.gameWidth,
         gameHeight: option.gameHeight
+    };
+  }
+
+  invalidMove() {
+    return {
+        location: this.option.location,
+        previousLoc: this.option.location,
+        gameWidth: this.option.gameWidth,
+        gameHeight: this.option.gameHeight,
+        invalidMove: true
     };
   }
 }
