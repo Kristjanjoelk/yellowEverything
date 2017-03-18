@@ -8,7 +8,7 @@ const colors = {
   1: 'yellow',
   2: 'red',
   5: 'black',
-  6: 'grey'
+  6: 'plum'
 };
 
 const animName = {
@@ -23,10 +23,11 @@ class Box extends Component {
         /* eslint-disable no-mixed-operators */
         var background = colors[this.props.value];
         return {
-            "borderLeft": "1px solid black",
-            "borderRight": "1px solid black",
-            "borderTop": this.props.value === 6 && "1px solid red" || "1px solid black",
-            "borderBottom": this.props.value === 6 && "1px solid red" || "1px solid black",
+            "box-sizing": "border-box",
+            "borderLeft": "1px outset black",
+            "borderRight": "1px outset black",
+            "borderTop": this.props.value === 6 && "1px outset red" || "1px outset black",
+            "borderBottom": this.props.value === 6 && "1px outset red" || "1px outset black",
             "width": "60px",
             "height": "60px",
             "background": background,

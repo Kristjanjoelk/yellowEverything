@@ -9,7 +9,8 @@ const keyboard = {
   65: 'left',
   87: 'up', 
   68: 'right',
-  83: 'down'
+  83: 'down',
+  82: 'reset'
 };
 
 let keydownActive;

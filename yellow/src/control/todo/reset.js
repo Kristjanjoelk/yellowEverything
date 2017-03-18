@@ -2,7 +2,7 @@ import actions from '../../actions';
 
 // Resets current level 
 
-const reset = (store) => {
+const down = (store) => {
     const state = store.getState();
     const curLevel = state.get('level');
     const cur = state.get('cur');
@@ -12,6 +12,13 @@ const reset = (store) => {
     store.dispatch(actions.resetPlayer(nextCur));
 };
 
+const up = (store) => {
+  store.dispatch(actions.keyboard.down(false));
+};
 
 
-export default reset;
+
+export default {
+  down,
+  up,
+};

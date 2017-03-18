@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import Box from '../box/Box';
+import LeftArrow from 'react-icons/lib/fa/arrow-left';
+import RightArrow from 'react-icons/lib/fa/arrow-right';
 import './Board.css';
 
 
@@ -19,24 +21,38 @@ class SolutionBoard extends Component {
     }
 
 
-    nextSequence = () => {
-        let pos = this.state.sequence[this.state.sequenceCounter + 1];
+    getSequence = (seq, forward) => {
+        if(seq < 0) { return ;}
+        let pos = this.state.sequence[seq];
         var tempBoard = this.state.board;
 
-        if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] === 1 && this.state.sequenceCounter === 0) {
+        // reset the board if we component is re-opened
+        if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] === 1 && seq === 0) {
             tempBoard = this.props.level.option.solution.board.map(function(arr) {
                 return arr.slice();
             });
         }
-        tempBoard[parseInt(pos.y)][parseInt(pos.x)] += 1;
-        if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] > 2) {
-            tempBoard[parseInt(pos.y)][parseInt(pos.x)] = 0;
+
+        // Assign box values
+        if(!forward) {
+            let prevPos = this.state.sequence[seq + 1];
+            tempBoard[parseInt(prevPos.y)][parseInt(prevPos.x)] -= 1;
+
+        } else {
+            tempBoard[parseInt(pos.y)][parseInt(pos.x)] += 1;
+            if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] > 2) {
+                tempBoard[parseInt(pos.y)][parseInt(pos.x)] = 0;
+            }
         }
+
+
+        // Update state
         this.setState({
-            sequenceCounter: ++this.state.sequenceCounter,
+            sequenceCounter: seq,
             board: tempBoard
         });
     }
+
     style() {
         // console.log("style() board, this.props.level", this.props.level);
         return {
@@ -86,7 +102,9 @@ class SolutionBoard extends Component {
                     }
                 </div>
                 <div>Level: {this.props.level.option.currentLevel + 1}</div>
-                <button onClick={this.nextSequence} disabled={(this.props.level.option.solution.solutionSequence.length -1 === this.state.sequenceCounter)}>Next move: </button>
+                <div>Moves: {this.state.sequenceCounter}</div>
+                <LeftArrow className="keyboard-arrow" onClick={( ) => this.getSequence(this.state.sequenceCounter > 0 ? this.state.sequenceCounter - 1 : -1, false)}/>
+                <RightArrow className="keyboard-arrow" onClick={( ) => this.getSequence(this.props.level.option.solution.solutionSequence.length - 2 !== this.state.sequenceCounter ? this.state.sequenceCounter + 1 : -1, true)}/>
             </div>
         );
     }
