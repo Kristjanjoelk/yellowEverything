@@ -40,8 +40,10 @@ class SolutionBoard extends Component {
 
         } else {
             tempBoard[parseInt(pos.y)][parseInt(pos.x)] += 1;
-            if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] > 2) {
+            if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] === 3) {
                 tempBoard[parseInt(pos.y)][parseInt(pos.x)] = 0;
+            } else if(tempBoard[parseInt(pos.y)][parseInt(pos.x)] > 3) {
+                tempBoard[parseInt(pos.y)][parseInt(pos.x)] = 1;
             }
         }
 
@@ -104,7 +106,7 @@ class SolutionBoard extends Component {
                 <div>Level: {this.props.level.option.currentLevel + 1}</div>
                 <div>Moves: {this.state.sequenceCounter}</div>
                 <LeftArrow className="keyboard-arrow" onClick={( ) => this.getSequence(this.state.sequenceCounter > 0 ? this.state.sequenceCounter - 1 : -1, false)}/>
-                <RightArrow className="keyboard-arrow" onClick={( ) => this.getSequence(this.props.level.option.solution.solutionSequence.length - 2 !== this.state.sequenceCounter ? this.state.sequenceCounter + 1 : -1, true)}/>
+                <RightArrow className="keyboard-arrow" onClick={( ) => this.getSequence(this.props.level.option.solution.solutionSequence.length - 1 !== this.state.sequenceCounter ? this.state.sequenceCounter + 1 : -1, true)}/>
             </div>
         );
     }

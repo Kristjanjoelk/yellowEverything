@@ -8,7 +8,8 @@ const colors = {
   1: 'yellow',
   2: 'red',
   5: 'black',
-  6: 'plum'
+  6: 'grey',
+  7: 'grey',
 };
 
 const animName = {
@@ -17,17 +18,20 @@ const animName = {
   2: 'fade-in-red'
 };
 
+/**
+ * Class component for individual boxes in the game board
+ */
 
 class Box extends Component {
     style() {
         /* eslint-disable no-mixed-operators */
         var background = colors[this.props.value];
         return {
-            "box-sizing": "border-box",
-            "borderLeft": "1px outset black",
-            "borderRight": "1px outset black",
-            "borderTop": this.props.value === 6 && "1px outset red" || "1px outset black",
-            "borderBottom": this.props.value === 6 && "1px outset red" || "1px outset black",
+            "boxSizing": "border-box",
+            "borderLeft": this.props.value === 7 && "3px dotted red" || "1px outset black",
+            "borderRight": this.props.value === 7 && "3px dotted red" || "1px outset black",
+            "borderTop": this.props.value === 6 && "3px dotted red" || "1px outset black",
+            "borderBottom": this.props.value === 6 && "3px dotted red" || "1px outset black",
             "width": "60px",
             "height": "60px",
             "background": background,

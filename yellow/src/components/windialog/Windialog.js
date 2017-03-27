@@ -27,8 +27,7 @@ class WinDialog extends React.Component {
     } 
 
     reset = () => {
-        // TODO : Send action to start a new game
-        todo.reset(store);
+        todo['reset'].down(store);
     } 
     render() {
         let message = this.props.level.option.winState === 1 ? "You won!" : "You lost!";

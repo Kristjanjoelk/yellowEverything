@@ -3,6 +3,7 @@ import LeftArrow from 'react-icons/lib/fa/arrow-left';
 import RightArrow from 'react-icons/lib/fa/arrow-right';
 import DownArrow from 'react-icons/lib/fa/arrow-down';
 import UpArrow from 'react-icons/lib/fa/arrow-up';
+import Reset from 'react-icons/lib/fa/repeat';
 import todo from '../../control/todo';
 import store from '../../store';
 import './Keys.css';
@@ -27,6 +28,7 @@ class Keys extends Component {
     shouldComponentUpdate (nextProps, nextState) {
         return this.props.value !== nextProps.value;
     }
+    // Obviously these four functions are redundant, im just too lazy to fix it
     handleLeft() {
         todo[thing[0]].down(store);
     }
@@ -39,17 +41,13 @@ class Keys extends Component {
     handleDown() {
         todo[thing[3]].down(store);
     }
-    reset = () => {
-        // TODO : Send action to start a new game
+    reset() {
+        console.log("Hello from reset");
         todo['reset'].down(store);
     } 
 
 
     render() {
-        // const up = 
-        // const left = <LeftArrow className="keyboard-arrow" id="left" onClick={() => this.handleLeft()}/>;
-        // const down = <DownArrow className="keyboard-arrow" id="down" onClick={() => this.handleDown()}/>;
-        // const right = <RightArrow className="keyboard-arrow" id="right" onClick={() => this.handleRight()}/>;
         return (
             <div className="arrow-container">
                 {
@@ -67,7 +65,7 @@ class Keys extends Component {
                         }
                     }.bind(this)
                     )}
-                <button className="reset-button" onClick={this.reset}>reset</button>
+                <Reset className="reset-button" onClick={() => this.reset()} />
             </div>
         );
     }

@@ -62,9 +62,11 @@ class Level {
   }
   
   isMoveValid(loc, prevLoc) {
-    if(this.option.board[loc.y][loc.x] === 6) {
-      //return prevLoc - loc < this.option.gameWidth && prevLoc - loc > -this.option.gameWidth;
-      return loc.y === prevLoc.y
+    if(this.option.board[loc.y][loc.x] === 6) { 
+      return loc.y === prevLoc.y // if current and previous Y are the same, we are at the same row
+    }
+    if(this.option.board[loc.y][loc.x] === 7) {
+      return loc.x === prevLoc.x // if current and previous X are the same, we are at the same column
     }
     return this.option.board[loc.y][loc.x] !== 5;
   }
@@ -78,8 +80,8 @@ class Level {
     //   console.log("Inside addLocationValue", loc);
     //   console.log("the board", this.option.board);
       var tempBoard = this.option.board;
-      if(this.option.board[loc.y][loc.x] === 6) {
-        this.option.board[loc.y][loc.x] = 0
+      if(this.option.board[loc.y][loc.x] === 6 || this.option.board[loc.y][loc.x] === 7) {
+        this.option.board[loc.y][loc.x] = 1
       } else {
         tempBoard[loc.y][loc.x] = this.option.board[loc.y][loc.x] < 2 ? ++this.option.board[loc.y][loc.x] : 0;
       }
