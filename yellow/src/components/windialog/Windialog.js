@@ -18,17 +18,30 @@ class WinDialog extends React.Component {
     gotoNext = () => {
         // TODO : Send action to start a new gam
         const state = store.getState();
+
+        // Change level status
         const curLevel = state.get('level');
-        const cur = state.get('cur');
         const nextLevel = curLevel.getNextLevel();
+
+        // Change player status
+        const cur = state.get('cur');
         const nextCur = cur.resetPlayer(nextLevel);
+
+        // Save to progress
+        const prog = state.get('progress');
+        const newBoard = prog.addBoard(curLevel);
+        
+        // Dispatch actions
         store.dispatch(actions.getNextLevel(nextLevel));
         store.dispatch(actions.resetPlayer(nextCur));
+        store.dispatch(actions.addBoard(newBoard));
     } 
 
     reset = () => {
         todo['reset'].down(store);
     } 
+
+
     render() {
         let message = this.props.level.option.winState === 1 ? "You won!" : "You lost!";
         return <div>
@@ -54,7 +67,7 @@ class WinDialog extends React.Component {
                 }
                 <p>With {this.props.level.option.moveCounter} moves</p>
                 <button onClick={this.reset} >Try again</button>
-                <button onClick={this.gotoNext} disabled={!(this.props.level.option.winState === 1)}>Next level</button>
+               <button onClick={this.gotoNext} disabled={!(this.props.level.option.winState === 1)}>Next level</button>
                 </ModalDialog>
             </ModalContainer>
             }

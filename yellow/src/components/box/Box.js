@@ -28,10 +28,10 @@ class Box extends Component {
         var background = colors[this.props.value];
         return {
             "boxSizing": "border-box",
-            "borderLeft": this.props.value === 7 && "3px dotted red" || "1px outset black",
-            "borderRight": this.props.value === 7 && "3px dotted red" || "1px outset black",
-            "borderTop": this.props.value === 6 && "3px dotted red" || "1px outset black",
-            "borderBottom": this.props.value === 6 && "3px dotted red" || "1px outset black",
+            "borderLeft": this.props.value === 7 && "3px dotted red", //|| "1px outset black",
+            "borderRight": this.props.value === 7 && "3px dotted red", // || "1px outset black",
+            "borderTop": this.props.value === 6 && "3px dotted red", // || "1px outset black",
+            "borderBottom": this.props.value === 6 && "3px dotted red", // || "1px outset black",
             "width": "60px",
             "height": "60px",
             "background": background,

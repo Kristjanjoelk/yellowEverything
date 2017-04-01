@@ -10,16 +10,27 @@ const keyboard = {
   87: 'up', 
   68: 'right',
   83: 'down',
-  82: 'reset'
+  82: 'reset',
+};
+
+const arrowKeys = {
+  37: 'left',
+  38: 'up',
+  39: 'right',
+  40: 'down'
 };
 
 let keydownActive;
 
 const boardKeys = Object.keys(keyboard).map(e => parseInt(e, 10));
+const arrowKeysMap = Object.keys(arrowKeys).map(e => parseInt(e, 10));
 
 const keyDown = (e) => {
   if (boardKeys.indexOf(e.keyCode) === -1) {
     return;
+  }
+  if (arrowKeysMap.indexOf(e.keyCode) !== -1) {
+    e.preventDefault();
   }
   const type = keyboard[e.keyCode];
   if (type === keydownActive) {
@@ -32,6 +43,9 @@ const keyDown = (e) => {
 const keyUp = (e) => {
   if (boardKeys.indexOf(e.keyCode) === -1) {
     return;
+  }
+  if (arrowKeysMap.indexOf(e.keyCode) !== -1) {
+    e.preventDefault();
   }
   const type = keyboard[e.keyCode];
   if (type === keydownActive) {

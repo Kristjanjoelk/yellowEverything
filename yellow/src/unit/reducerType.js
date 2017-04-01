@@ -10,3 +10,7 @@ export const NEXT_LEVEL = 'NEXT_LEVEL';
 export const RESET_PLAYER = 'RESET_PLAYER';
 export const RESET_LEVEL = 'RESET_LEVEL';
 export const INVALID_MOVE = 'INVALID_MOVE';
+export const ADD_BOARD = 'ADD_BOARD';
+export const SET_NEXT = 'SET_NEXT';
+export const SET_PREV = 'SET_PREV';
+export const SET_LEVEL = 'SET_LEVEL';

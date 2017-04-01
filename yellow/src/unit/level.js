@@ -1,4 +1,6 @@
 import { gameLevels } from './const';
+// import Box from './boxElement';
+
 class Level {
   constructor(option) {
     // console.log("Recieved new Level options:", option);
@@ -13,6 +15,12 @@ class Level {
     this.option.gameWidth = level.width;
     this.option.gameHeight = level.height;
     this.option.board = level.board.map(function(arr) {
+        // let length = arr.length() - 1;
+        // let temp = [];
+        // while(length--) {
+        //   temp.push(new Box(arr[length])); // Maybe use this when Box element is implemented
+        // }
+        // return temp;
         return arr.slice();
     });;
     this.option.solution = level.solution;
@@ -44,7 +52,6 @@ class Level {
 
   checkBoardState() {
     let flag = 1;
-    // let size = this.option.gameWidth * this.option.gameHeight;
     for(let i = 0; i < this.option.gameHeight; i++) {
       for(let j = 0; j < this.option.gameWidth; j++)
         if(this.option.board[i][j] !== 1) {
@@ -54,7 +61,6 @@ class Level {
         }
     }
     if(this.option.moveCounter + 1 >= this.option.solution.max) {
-      console.log("Ohhoo.. max moves reached");
       return 3;
     }
 
@@ -111,6 +117,11 @@ class Level {
           moveCounter: 0,
           solution: sameLevel.solution,
     }
+  }
+
+  setLevel(option) {
+    this.option = option;
+    return this.option;
   }
 
   getNextLevel() {

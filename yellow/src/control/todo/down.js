@@ -9,10 +9,8 @@ const down = (store) => {
     const curLevel = state.get('level');
     if (cur !== null) {
       const next = cur.down(curLevel);
-      console.log("before adding value in down", curLevel);
       const nextLevel = curLevel.addLocationValue(next);
       if (nextLevel === -1) {
-        //let temp = Object.assign({}, cur, {invalidMove: true});
         store.dispatch(actions.invalidMove(cur.invalidMove()));
         return;
       }

@@ -5,6 +5,8 @@ import up from './up';
 import colChange from './colChange';
 import rowChange from './rowChange';
 import reset from './reset';
+import nextMap from './nextMap';
+import previousMap from './previousMap';
 
 export default {
   left,
@@ -14,4 +16,6 @@ export default {
   colChange,
   rowChange,
   reset,
+  nextMap,
+  previousMap
 };

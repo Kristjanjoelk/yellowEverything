@@ -2,6 +2,9 @@ import keyboard from './keyboard';
 import * as reducerType from '../unit/reducerType';
 import Player from '../unit/player';
 import Level from '../unit/level';
+import Progress from '../unit/progress';
+
+// todo: Maybe group these things into seperate files??
 
 // eslint-disable-next-line
 function movePlayer(option) {
@@ -51,8 +54,15 @@ function resetPlayer(option) {
   };
 };
 
+function setLevel(option) {
+  console.log("inside setLevel actions", option);
+  return {
+    type: reducerType.SET_LEVEL,
+    data: new Level(option),
+  };
+};
+
 function resetLevel(option) {
-  // console.log("inside resetLevel actions", option);
   return {
     type: reducerType.RESET_LEVEL,
     data: new Level(option),
@@ -60,12 +70,33 @@ function resetLevel(option) {
 };
 
 function invalidMove(option) {
-  // console.log("inside resetLevel actions", option);
   return {
     type: reducerType.INVALID_MOVE,
     data: new Player(option),
   };
 };
+
+function addBoard(option) {
+  return {
+    type: reducerType.ADD_BOARD,
+    data: new Progress(option),
+  };
+}
+
+
+function setNextMap(option) {
+  return {
+    type: reducerType.SET_NEXT,
+    data: new Progress(option),
+  };
+}
+
+function setPreviousMap(option) {
+  return {
+    type: reducerType.SET_PREV,
+    data: new Progress(option),
+  };
+}
 
 
 export default {
@@ -77,5 +108,9 @@ export default {
   getNextLevel,
   resetPlayer,
   resetLevel,
-  invalidMove
+  invalidMove,
+  addBoard,
+  setNextMap,
+  setPreviousMap,
+  setLevel
 };

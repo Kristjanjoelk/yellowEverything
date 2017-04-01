@@ -4,13 +4,6 @@ class Player {
   }
   down(level) {
     let h = level.option.gameHeight;
-    // var curr = this.option.location;
-    // // console.log("option", level);
-    // if (curr > ((h - 1) * w)) {
-    //     curr -= (h - 1) * w;
-    // } else {
-    //     curr += h;
-    // }
     let curr = Object.assign({}, this.option.location);
     if(curr.y < (h - 1)) {
         curr.y++;
