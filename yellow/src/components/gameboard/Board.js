@@ -27,12 +27,20 @@ class Board extends Component {
             "width": (this.props.level.option.gameWidth * 70) + "px",
             "height": (this.props.level.option.gameHeight * 70) + "px",
             "display": "inline-block",
-            "textAlign": "center",
             "margin" : "0 auto",
         }
     }
 
     getPreviousMap() {
+        const state = store.getState();
+        const curLevel = state.get('level');
+
+        // Save to progress
+        const prog = state.get('progress');
+        const newBoard = prog.addBoard(curLevel);
+        if(newBoard !== -1) {
+            store.dispatch(actions.addBoard(newBoard));
+        }
         todo['previousMap'].down(store);
     }
 
@@ -46,7 +54,7 @@ class Board extends Component {
         return (
             <Grid fluid>
                 <Row between="xs">
-                    <Col xs={2}>
+                    <Col>
                         <div className="previous-map">
                             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
                                 <FloatingActionButton mini={true} backgroundColor="grey" disabled={this.props.level.option.currentLevel === 0} onClick={() => this.getPreviousMap()}>
@@ -55,9 +63,9 @@ class Board extends Component {
                             </MuiThemeProvider>
                         </div>
                     </Col>
-                    <Col xs={6}>
-                        <Row center="xs">
-                            <Col xs={6}>
+                    <Col>
+                        <Row >
+                            <Col xs={5}>
                                 <div className={this.props.cur.option.invalidMove ? "gameboard-shake" : "gameboard"} >
                                     <div style={this.style()} >
                                         {
@@ -72,6 +80,7 @@ class Board extends Component {
                                                         level = {this.props.level} 
                                                         cur = {this.props.cur}
                                                         hasPlayer = {location.x === this.props.cur.option.location.x && location.y === this.props.cur.option.location.y}
+                                                        boxSize = {(Math.max(this.props.level.option.gameWidth,this.props.level.option.gameHeight) * 70)/Math.max(this.props.level.option.gameWidth,this.props.level.option.gameHeight)}
                                                     />)
                                                 }.bind(this))
                                                 return boxes;
@@ -84,10 +93,10 @@ class Board extends Component {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={2}>
+                    <Col>
                         <div className="next-map">
                             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
-                                <FloatingActionButton mini={true} backgroundColor="grey" disabled={!this.props.progress.option.boards[this.props.level.option.currentLevel]} onClick={() => this.getNextMap()}>
+                                <FloatingActionButton mini={true} backgroundColor="grey" disabled={!this.props.progress.option.boards[this.props.level.option.currentLevel + 1] || !this.props.progress.option.boards[this.props.level.option.currentLevel].winState === 2} onClick={() => this.getNextMap()}>
                                     <NextMap/>
                                 </FloatingActionButton>
                             </MuiThemeProvider>

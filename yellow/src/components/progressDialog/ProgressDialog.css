@@ -1,0 +1,13 @@
+.progress-dialog {
+    width: 200px;
+    display: inline-block;
+    padding-bottom: 10%;
+}
+
+.level-counter {
+    font-size: 8px;
+}
+
+.total-moves-container {
+    width: 190px;
+}

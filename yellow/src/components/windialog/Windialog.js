@@ -34,7 +34,9 @@ class WinDialog extends React.Component {
         // Dispatch actions
         store.dispatch(actions.getNextLevel(nextLevel));
         store.dispatch(actions.resetPlayer(nextCur));
-        store.dispatch(actions.addBoard(newBoard));
+        if(newBoard !== -1 ){
+            store.dispatch(actions.addBoard(newBoard));
+        }
     } 
 
     reset = () => {

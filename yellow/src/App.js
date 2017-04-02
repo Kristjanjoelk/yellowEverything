@@ -6,6 +6,7 @@ import WinDialog from './components/windialog/Windialog';
 import { connect } from 'react-redux';
 import store from './store';
 import DialogButton from './components/solutionDialog/DialogButton';
+import ProgressButton from './components/progressDialog/ProgressButton';
 import './App.css';
 import { subscribeRecord } from './unit';
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Keys/>
           <WinDialog cur={this.props.cur} level={this.props.level}/>
           <DialogButton level={this.props.level} />
+          <ProgressButton progress={this.props.progress} />
         </div>
     );
   }

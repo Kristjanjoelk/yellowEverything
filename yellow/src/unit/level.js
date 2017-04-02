@@ -103,13 +103,14 @@ class Level {
       }
   }
 
-  reset() {
-    let sameLevel = gameLevels[this.option.currentLevel];
-    // console.log("recived signal to reset");
+  reset(_index) {
+    let index = _index > -1 ? _index : this.option.currentLevel;
+    let sameLevel = gameLevels[index];
+    console.log("recieved signal to reset index:", _index);
     return {
-          currentLevel: this.option.currentLevel,
-          gameWidth: this.option.gameWidth,
-          gameHeight: this.option.gameHeight,
+          currentLevel: index,
+          gameWidth: sameLevel.width,
+          gameHeight: sameLevel.height,
           board: sameLevel.board.map(function(arr) {
             return arr.slice();
           }),

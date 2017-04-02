@@ -16,7 +16,7 @@ import Level from '../../unit/level';
 
 const initState = (() => {
   const option = {
-    currentLevel: 0,
+    currentLevel: 5,
     gameWidth: 3,
     gameHeight: 3,
     board: [],

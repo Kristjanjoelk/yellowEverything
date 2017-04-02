@@ -6,14 +6,16 @@ const down = (store) => {
         const state = store.getState();
         const curLevel = state.get('level');
         const prog = state.get('progress')
+        const cur = state.get('cur');
         if (curLevel !== null) {
             const nextMap = prog.setNextMap();
-                console.log("recived from nextmap", nextMap);
-                console.log("Setting new level as:", nextMap.boards[nextMap.currentBoardIndex]);
             if(nextMap !== -1) {
-                const nextLevel = curLevel.setLevel(nextMap.boards[nextMap.currentBoardIndex]);
+                const nextLevel = curLevel.reset(nextMap.currentBoardIndex);
+                console.log("nextLevel:", nextLevel);
+                const nextCur = cur.resetPlayer(nextLevel);
                 store.dispatch(actions.setNextMap(nextMap));
-                store.dispatch(actions.setLevel(nextLevel));
+                store.dispatch(actions.resetLevel(nextLevel));
+                store.dispatch(actions.resetPlayer(nextCur));
             }
         }
     }

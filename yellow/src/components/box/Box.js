@@ -32,9 +32,10 @@ class Box extends Component {
             "borderRight": this.props.value === 7 && "3px dotted red", // || "1px outset black",
             "borderTop": this.props.value === 6 && "3px dotted red", // || "1px outset black",
             "borderBottom": this.props.value === 6 && "3px dotted red", // || "1px outset black",
-            "width": "60px",
-            "height": "60px",
+            "width": this.props.boxSize,
+            "height": this.props.boxSize,
             "background": background,
+            "margin": "0 auto",
             "float": "left",
             "animationName": animName[this.props.value],
             "animationDuration": "0.5s",
@@ -56,7 +57,8 @@ class Box extends Component {
 Box.propTypes = {
   cur: React.PropTypes.object,
   level: React.PropTypes.object,
-  hasPlayer: React.PropTypes.bool.isRequired
+  hasPlayer: React.PropTypes.bool.isRequired,
+  boxSize: React.PropTypes.number.isRequired
 };
 
 export default Box;
