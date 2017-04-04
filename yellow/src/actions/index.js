@@ -3,6 +3,7 @@ import * as reducerType from '../unit/reducerType';
 import Player from '../unit/player';
 import Level from '../unit/level';
 import Progress from '../unit/progress';
+import authentication from './authentication';
 
 // todo: Maybe group these things into seperate files??
 
@@ -113,5 +114,6 @@ export default {
   addBoard,
   setNextMap,
   setPreviousMap,
-  setLevel
+  setLevel,
+  authentication
 };

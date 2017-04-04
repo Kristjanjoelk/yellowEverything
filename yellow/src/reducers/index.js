@@ -3,13 +3,14 @@ import cur from './cur';
 import keyboard from './keyboard';
 import level from './level';
 import progress from './progress';
-
+import auth from './auth';
 
 const rootReducer = combineReducers({
   level,
   cur,
   keyboard,
-  progress
+  progress,
+  auth
 });
 
 export default rootReducer;
