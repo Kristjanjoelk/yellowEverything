@@ -24,7 +24,7 @@ class Keys extends Component {
             board: ["", "", "", "", "", "", "", "", ""],
         }
     }
-
+    // Prevent updates, this component does not need to update, ... ever
     shouldComponentUpdate (nextProps, nextState) {
         return this.props.value !== nextProps.value;
     }
@@ -61,7 +61,7 @@ class Keys extends Component {
                         } if(i === 7) {
                             return <DownArrow key={i} className="keyboard-arrow" id="down" onClick={() => this.handleDown()}/>;
                         } else {
-                            return <div key={i} className="keyboard-arrow"></div>
+                            return <div key={i} className="non-keyboard-arrow"></div>
                         }
                     }.bind(this)
                     )}

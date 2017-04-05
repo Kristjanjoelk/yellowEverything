@@ -17,7 +17,9 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 // fix for console warning
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+import '../../control';
 
+import ReactTooltip from 'react-tooltip';
 
 class Board extends Component {
 
@@ -54,19 +56,21 @@ class Board extends Component {
         return (
             <Grid fluid>
                 <Row between="xs">
-                    <Col>
-                        <div className="previous-map">
-                            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
-                                <FloatingActionButton mini={true} backgroundColor="grey" disabled={this.props.level.option.currentLevel === 0} onClick={() => this.getPreviousMap()}>
-                                    <PreviousMap/>
-                                </FloatingActionButton>
-                            </MuiThemeProvider>
-                        </div>
+                    <Col  className="get-map-button left-button">
+                        <p ref='foo' ></p>
+                        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
+                            <FloatingActionButton mini={true} backgroundColor="grey" disabled={this.props.level.option.currentLevel === 0} onClick={() => this.getPreviousMap()}>
+                                <PreviousMap/>
+                                    <p data-tip="previous-button">Tooltip</p>
+                            </FloatingActionButton>
+                        </MuiThemeProvider>
+                        <ReactTooltip/>
                     </Col>
                     <Col>
                         <Row >
                             <Col xs={5}>
                                 <div className={this.props.cur.option.invalidMove ? "gameboard-shake" : "gameboard"} >
+                                    <h4>Level: {this.props.level.option.currentLevel + 1}</h4>
                                     <div style={this.style()} >
                                         {
                                             this.props.level.option.board.map(function(row, i) {
@@ -87,20 +91,17 @@ class Board extends Component {
                                             }.bind(this))
                                         }
                                     </div>
-                                    <div>Level: {this.props.level.option.currentLevel + 1}</div>
                                     <div>Moves: {this.props.level.option.moveCounter}</div>
                                 </div>
                             </Col>
                         </Row>
                     </Col>
-                    <Col>
-                        <div className="next-map">
-                            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
-                                <FloatingActionButton mini={true} backgroundColor="grey" disabled={!this.props.progress.option.boards[this.props.level.option.currentLevel + 1] || !this.props.progress.option.boards[this.props.level.option.currentLevel].winState === 2} onClick={() => this.getNextMap()}>
-                                    <NextMap/>
-                                </FloatingActionButton>
-                            </MuiThemeProvider>
-                        </div>
+                    <Col className="get-map-button">
+                        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} >
+                            <FloatingActionButton mini={true} backgroundColor="grey" disabled={!this.props.progress.option.boards[this.props.level.option.currentLevel + 1] || !this.props.progress.option.boards[this.props.level.option.currentLevel].winState === 2} onClick={() => this.getNextMap()}>
+                                <NextMap/>
+                            </FloatingActionButton>
+                        </MuiThemeProvider>
                     </Col>
                 </Row>
             </Grid>

@@ -95,6 +95,7 @@ class SolutionBoard extends Component {
                                     level = {this.props.level} 
                                     cur = {currentLocation}
                                     hasPlayer = {location.x === currentLocation.option.location.x && location.y === currentLocation.option.location.y}
+                                    boxSize = {(Math.max(this.props.level.option.gameWidth,this.props.level.option.gameHeight) * 70)/Math.max(this.props.level.option.gameWidth,this.props.level.option.gameHeight)}
                                 />)
                             }.bind(this))
                             

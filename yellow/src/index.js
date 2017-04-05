@@ -7,7 +7,6 @@ import App from './pages/app/App';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
 import Root from './pages/root';
-import './control';
 import './index.css';
 
 

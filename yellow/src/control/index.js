@@ -1,5 +1,6 @@
 import store from '../store';
 import todo from './todo';
+import { browserHistory } from 'react-router';
 
 const keyboard = {
   37: 'left',
@@ -13,25 +14,24 @@ const keyboard = {
   82: 'reset',
 };
 
-const arrowKeys = {
-  37: 'left',
-  38: 'up',
-  39: 'right',
-  40: 'down'
-};
+// const arrowKeys = {
+//   37: 'left',
+//   38: 'up',
+//   39: 'right',
+//   40: 'down'
+// };
 
 let keydownActive;
 
 const boardKeys = Object.keys(keyboard).map(e => parseInt(e, 10));
-const arrowKeysMap = Object.keys(arrowKeys).map(e => parseInt(e, 10));
+// const arrowKeysMap = Object.keys(arrowKeys).map(e => parseInt(e, 10));
 
 const keyDown = (e) => {
-  if (boardKeys.indexOf(e.keyCode) === -1) {
+  let loc = browserHistory.getCurrentLocation(); 
+  if (boardKeys.indexOf(e.keyCode) === -1 || loc.pathname !== '/') {
     return;
   }
-  if (arrowKeysMap.indexOf(e.keyCode) !== -1) {
-    e.preventDefault();
-  }
+  e.preventDefault();
   const type = keyboard[e.keyCode];
   if (type === keydownActive) {
     return;
@@ -41,12 +41,11 @@ const keyDown = (e) => {
 };
 
 const keyUp = (e) => {
-  if (boardKeys.indexOf(e.keyCode) === -1) {
+  let loc = browserHistory.getCurrentLocation(); 
+  if (boardKeys.indexOf(e.keyCode) === -1 || loc.pathname !== '/') {
     return;
   }
-  if (arrowKeysMap.indexOf(e.keyCode) !== -1) {
-    e.preventDefault();
-  }
+  e.preventDefault();
   const type = keyboard[e.keyCode];
   if (type === keydownActive) {
     keydownActive = '';

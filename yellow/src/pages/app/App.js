@@ -17,15 +17,15 @@ class App extends Component {
   
   render() {
     return (
-        <div className="main-container">
-          <p> Yellow Everything! </p>
-          <User auth={this.props.auth} />
-          <Board cur={this.props.cur} level={this.props.level} progress={this.props.progress}/>
-          <Keys/>
-          <WinDialog cur={this.props.cur} level={this.props.level}/>
-          <DialogButton level={this.props.level} />
-          <ProgressButton progress={this.props.progress} />
-        </div>
+      <div className="main-container">
+        <User auth={this.props.auth} />
+        <h1>Yellow everything!</h1>
+        <Board cur={this.props.cur} level={this.props.level} progress={this.props.progress}/>
+        <Keys/>
+        <WinDialog cur={this.props.cur} level={this.props.level}/>
+        <DialogButton level={this.props.level} />
+        <ProgressButton progress={this.props.progress} />
+      </div>
     );
   }
 }

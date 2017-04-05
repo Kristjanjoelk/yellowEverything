@@ -31,15 +31,11 @@
   }
 }
 
-/*.previous-map {
-  z-index: 500;
-  position: absolute;
-  margin-top: 15%;
+.get-map-button {
+  display: flex;
+  align-items: center;
 }
 
-.next-map {
-  z-index: 500;
-  position: absolute;
-  margin-left: 90%;
-  margin-top: -42%;
-}*/
+.left-button {
+  margin-left: -5%;
+}

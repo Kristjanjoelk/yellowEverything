@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { login, resetPassword } from '../../firebase/auth';
 import {  browserHistory } from 'react-router';
+import store from '../../store';
+import actions from '../../actions';
 
 function setErrorMsg(error) {
   return {
@@ -11,9 +13,18 @@ function setErrorMsg(error) {
 export default class Login extends Component {
   state = { loginMessage: null }
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     login(this.email.value, this.pw.value)
+      .then((user) => {
+        let temp = {
+          name: user.email.substring(0, user.email.indexOf("@")),
+          id: user.uid
+        }
+        store.dispatch(actions.authentication.login(temp));
+        browserHistory.replace('/');
+      })
       .catch((error) => {
+        console.log(error);
           this.setState(setErrorMsg('Invalid username/password.'))
         })
   }
