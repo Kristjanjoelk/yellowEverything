@@ -18,7 +18,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import '../../control';
-
+import { saveProgress } from '../../firebase/data';
 import ReactTooltip from 'react-tooltip';
 
 class Board extends Component {
@@ -38,11 +38,21 @@ class Board extends Component {
         const curLevel = state.get('level');
 
         // Save to progress
+        // TODO: It would be really cool if we could move this logic to somewhere else
         const prog = state.get('progress');
-        const newBoard = prog.addBoard(curLevel);
+        const auth = state.get('auth');
+        const newBoard = prog.addBoard(curLevel, false);
         if(newBoard !== -1) {
             store.dispatch(actions.addBoard(newBoard));
+
+            saveProgress(auth.option.user, newBoard)
+                .then((prog) => {
+                   console.log("Successfully saved progress");
+                }).catch((error) => {
+                    console.log(error);
+                })
         }
+
         todo['previousMap'].down(store);
     }
 

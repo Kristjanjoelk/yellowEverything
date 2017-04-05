@@ -41,12 +41,15 @@ class Progress {
         return counter;
     }
 
-    addBoard(level) {
-        if(level.option.currentLevel === this.option.currentBoardIndex) {
+    addBoard(level, status) {
+        if(this.option.boards[level.option.currentLevel] && this.option.boards[level.option.currentLevel].moveCounter < level.option.moveCounter) {
+            console.log("movecounter is less than original one");
             return -1;
         }
         let newBoards = this.option.boards.slice();
-        level.option.winState = 2;
+
+        // If status is TRUE then we set winState to true
+        level.option.winState = status ? 2 : 0;
         level.option.board = level.option.solution.board.map(function(arr) {
             return arr.slice();
         });

@@ -17,8 +17,11 @@ export default class Login extends Component {
     login(this.email.value, this.pw.value)
       .then((user) => {
         let temp = {
-          name: user.email.substring(0, user.email.indexOf("@")),
-          id: user.uid
+          isLoggedIn: true,
+          user: {
+            name: user.email.substring(0, user.email.indexOf("@")),
+            uid: user.uid
+          }
         }
         store.dispatch(actions.authentication.login(temp));
         browserHistory.replace('/');

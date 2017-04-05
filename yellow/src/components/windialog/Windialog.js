@@ -5,6 +5,8 @@ import actions from '../../actions';
 import todo from '../../control/todo';
 import Star from 'react-icons/lib/fa/star';
 import Ostar from 'react-icons/lib/fa/star-o';
+import { saveProgress } from '../../firebase/data';
+
 class WinDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +38,14 @@ class WinDialog extends React.Component {
         store.dispatch(actions.resetPlayer(nextCur));
         if(newBoard !== -1 ){
             store.dispatch(actions.addBoard(newBoard));
+            const auth = state.get('auth');
+            console.log("user:", auth.option.user);
+            saveProgress(auth.option.user, newBoard)
+                .then((prog) => {
+                   console.log("Successfully saved progress");
+                }).catch((error) => {
+                    console.log(error);
+                })
         }
     } 
 
