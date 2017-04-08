@@ -10,6 +10,7 @@ import DialogButton from '../../components/solutionDialog/DialogButton';
 import ProgressButton from '../../components/progressDialog/ProgressButton';
 import './App.css';
 import { subscribeRecord } from '../../unit';
+import ScoreButton from '../../components/scoreDialog/ScoreButton';
 
 subscribeRecord(store); 
 
@@ -25,6 +26,7 @@ class App extends Component {
         <WinDialog cur={this.props.cur} level={this.props.level}/>
         <DialogButton level={this.props.level} />
         <ProgressButton progress={this.props.progress} />
+        <ScoreButton progress={this.props.progress} />
       </div>
     );
   }

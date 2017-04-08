@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase/auth';
 import {  browserHistory } from 'react-router';
+import store from '../../store';
+import actions from '../../actions';
 function setErrorMsg(error) {
   return {
     registerError: error.message
@@ -12,7 +14,15 @@ export default class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     auth(this.email.value, this.pw.value)
-      .then(() => {
+      .then((user) => {
+        let temp = {
+          isLoggedIn: true,
+          user: {
+            name: user.name,
+            uid: user.uid
+          }
+        }
+        store.dispatch(actions.authentication.login(temp));
         browserHistory.replace('/');
       })
       .catch(e => this.setState(setErrorMsg(e)))

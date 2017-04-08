@@ -28,14 +28,17 @@ class Progress {
         }
     }
 
-    calculateTotalMoves(boards) {
+    calculateTotalMoves(boards, status) {
         if(!boards[0]) {
             return 0;
         }
         let i = boards.length;
         let counter = 0;
         while (i--) {
-            counter += boards[i].winState > 0 ? boards[i].moveCounter : 0;
+            if(status) {
+                console.log("inside status");
+                counter +=  status ? boards[i].moveCounter : 0;
+            }
         }
         console.log("inside calculateTotalMoves", counter, boards[0].moveCounter);
         return counter;
@@ -60,7 +63,7 @@ class Progress {
         return {
             boards: newBoards,
             currentBoardIndex: currentIndex,
-            totalMoves: this.calculateTotalMoves(newBoards)
+            totalMoves: this.calculateTotalMoves(newBoards, status)
         }
     }
 }

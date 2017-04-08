@@ -21,7 +21,9 @@ export function saveUser (user) {
   return ref.child(`users/${user.uid}/info`)
     .set({
       email: user.email,
-      uid: user.uid
+      uid: user.uid,
+      name: user.email.substring(0, user.email.indexOf("@")), // crop '@*.*' from email to get name
+
     })
     .then(() => user)
 }

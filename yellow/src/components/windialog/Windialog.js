@@ -31,9 +31,10 @@ class WinDialog extends React.Component {
 
         // Save to progress
         const prog = state.get('progress');
-        const newBoard = prog.addBoard(curLevel);
+        const newBoard = prog.addBoard(curLevel, true);
         
         // Dispatch actions
+        // TODO: MAKE SURE TO SAVE WITH VALID NAME!!
         store.dispatch(actions.getNextLevel(nextLevel));
         store.dispatch(actions.resetPlayer(nextCur));
         if(newBoard !== -1 ){

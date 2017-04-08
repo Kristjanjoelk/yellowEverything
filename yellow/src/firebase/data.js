@@ -7,3 +7,12 @@ export function saveProgress (user, progress) {
     })
     .then(() => progress)
 }
+
+export function getScore () {
+  console.log("inside getScore");
+  ref.child('users').on("value", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+}

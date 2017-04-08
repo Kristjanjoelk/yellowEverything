@@ -1,0 +1,29 @@
+.score-table-container {
+    display:inline-block;
+    text-align: center;
+    margin: 0;
+}
+.score-table {
+    display:inline-block;
+    width: 100%;
+}
+.score-table-row {
+    float:left;
+    width: 100%;
+}
+
+.score-table-element-start {
+    margin: 1%;
+    float: left;
+    width: 23%;
+    text-align: start;
+    max-width: 23%;
+}
+
+.score-table-element {
+    margin: 1%;
+    float: left;
+    width: 23%;
+    text-align: start;
+    max-width: 23%;
+}

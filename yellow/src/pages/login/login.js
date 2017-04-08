@@ -19,7 +19,7 @@ export default class Login extends Component {
         let temp = {
           isLoggedIn: true,
           user: {
-            name: user.email.substring(0, user.email.indexOf("@")),
+            name: user.name,
             uid: user.uid
           }
         }
