@@ -3,7 +3,7 @@ import Auth from '../../unit/auth';
 
 const initState = (() => {
   const option = {
-    isLoggedIn: false,
+    isLoggedIn: true,
     user: {
       name: '',
       uid: ''

@@ -21,8 +21,8 @@ class App extends Component {
       <div className="main-container">
         <User auth={this.props.auth} />
         <h1>Yellow everything!</h1>
-        <Board cur={this.props.cur} level={this.props.level} progress={this.props.progress}/>
-        <Keys/>
+        <Board cur={this.props.cur} level={this.props.level} progress={this.props.progress} />
+        <Keys keyboard={this.props.keyboard}/>
         <WinDialog cur={this.props.cur} level={this.props.level}/>
         <DialogButton level={this.props.level} />
         <ProgressButton progress={this.props.progress} />
@@ -37,13 +37,15 @@ App.propTypes = {
   level: React.PropTypes.object,
   progress: React.PropTypes.object.isRequired,
   auth: React.PropTypes.object,
+  keyboard: React.PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
   cur: state.get('cur'),
   level: state.get('level'),
   progress: state.get('progress'),
-  auth: state.get('auth')
+  auth: state.get('auth'),
+  keyboard: state.get('keyboard')
 });
 
 export default connect(mapStateToProps)(App);

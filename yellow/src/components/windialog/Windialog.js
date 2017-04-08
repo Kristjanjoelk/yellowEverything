@@ -7,6 +7,8 @@ import Star from 'react-icons/lib/fa/star';
 import Ostar from 'react-icons/lib/fa/star-o';
 import { saveProgress } from '../../firebase/data';
 
+// TODO: Make it so that when the user wins, we save the progress.. not after pushing "next level" button
+
 class WinDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,7 @@ class WinDialog extends React.Component {
             value: props.level.option.winState,
         }
     }
+
     shouldComponentUpdate () {
         return this.props.value !== this.props.level.option.winState;
     }

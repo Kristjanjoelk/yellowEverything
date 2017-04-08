@@ -8,6 +8,11 @@ export default class ProgressButton extends React.Component {
             showModal: false,
         }
   }
+
+  shouldComponentUpdate(props, state) {
+    return this.state.showModal !== state.showModal;
+  }
+
   openModal = () => {
     this.setState({showModal: true});
   }

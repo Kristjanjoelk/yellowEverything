@@ -5,8 +5,12 @@ import './ProgressDialog.css';
 
 class ProgressDialog extends React.Component {
 
+    shouldComponentUpdate() {
+        console.log("inside progressDialog component update");
+        return false;
+    }
+
     render() {
-        console.log("Inside progressDialog", this.props.progress);
         return <div>
             {
             <ModalContainer>

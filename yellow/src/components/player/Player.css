@@ -3,34 +3,29 @@
     text-align: center;
 }
 
-
-#player {
-
-}
-
 .player {
   margin-left: 45%;
   margin-top: 45%;
   /*border-radius: 50%; */
   backface-visibility: hidden;
-  width: 10px;
-  height: 10px;
+  width: 1.0em;
+  height: 1.0em;
 	background: green;
 }
 
 @keyframes left {
   0% {
     
-    transform: translateZ(0) scale(1.0, 1.0) translateX(60px);
+    transform: translateZ(0) scale(1.0, 1.0) translateX(6.0em);
   }
   100% {
-    transform: translateZ(0) scale(1.0, 1.0) translateX(0px);
+    transform: translateZ(0) scale(1.0, 1.0) translateX(0em);
   }
 }
 
 @keyframes right {
   0% {
-    transform: translateX(-60px);
+    transform: translateX(-6.0em);
   }
   100% {
     transform: translateX(0px);
@@ -39,7 +34,7 @@
 
 @keyframes down {
   0% {
-    transform: translateY(-60px);
+    transform: translateY(-6.0em);
   }
   100% {
     transform: translateY(0);
@@ -53,9 +48,9 @@
 
 @keyframes up {
   0% {
-    transform: translateY(60px);
+    transform: translateY(6.0em);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0em);
   }
 }

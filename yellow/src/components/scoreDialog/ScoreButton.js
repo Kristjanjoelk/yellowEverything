@@ -9,6 +9,8 @@ export default class ScoreButton extends React.Component {
             value: 1,
         }
   }
+
+
   openModal = () => {
     this.setState({showModal: true, value: this.state.value + 1});
   }

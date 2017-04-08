@@ -7,6 +7,10 @@ class UserScore extends Component {
     //     }
     // }
 
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
         return (
             <div className="score-table-row">

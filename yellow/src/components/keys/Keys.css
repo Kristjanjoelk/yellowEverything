@@ -1,28 +1,28 @@
 .arrow-container {
-    width: 250px;
-    height: 250px;
+    width: 25.0em;
+    height: 25.0em;
     display: table;
     margin: 0 auto;
     margin-top: 15%;
 }
 
 .keyboard-arrow {
-    width: 82px;
-    height: 82px;
+    width: 8.2em;
+    height: 8.2em;
     float: left;
     text-align: center;
 }
 
 .non-keyboard-arrow {
-    width: 82px;
-    height: 82px;
+    width: 8.2em;
+    height: 8.2em;
     float: left;
     text-align: center;
 }
 
-.keyboard-arrow:hover{
-    width: 82px;
-    height: 82px;
+.keyboard-arrow-active {
+    width: 8.2em;
+    height: 8.2em;
     float: left;
     text-align: center;
     border-radius: 50%;

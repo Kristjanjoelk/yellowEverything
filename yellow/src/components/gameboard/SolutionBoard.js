@@ -58,8 +58,8 @@ class SolutionBoard extends Component {
     style() {
         // console.log("style() board, this.props.level", this.props.level);
         return {
-            "width": (this.props.level.option.gameWidth * 70) + "px",
-            "height": (this.props.level.option.gameHeight * 70) + "px",
+            "width": (this.props.level.option.gameWidth * 7) + "em",
+            "height": (this.props.level.option.gameHeight * 7) + "em",
             "display": "inline-block",
             "textalign": "center",
         }

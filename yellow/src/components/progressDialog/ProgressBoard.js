@@ -16,9 +16,9 @@ class ProgressBoard extends Component {
     style() {
         // console.log("style() board, this.props.level", this.props.level);
         return {
-            "width": (this.props.level.option.gameWidth * 12) + "px",
-            "height": (this.props.level.option.gameHeight * 12) + "px",
-            "padding": "10px",
+            "width": (this.props.level.option.gameWidth * 1.2) + "em",
+            "height": (this.props.level.option.gameHeight * 1.2) + "em",
+            "padding": "1.0em",
             "display": "inline-block",
             "margin": "0 auto",
             "float": "left",

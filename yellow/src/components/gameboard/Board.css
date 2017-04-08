@@ -1,38 +1,84 @@
 .gameboard {
-    position: relative;
-    display: table;
-    margin: 0 auto;
+  position: relative;
+  display: table;
+  margin: 0 auto;
 }
 
 .gameboard-shake {
-    /*display: table; */
-    margin: 0 auto;
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+  /*display: table; */
+  margin: 0 auto;
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 @keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
+  10%,
+  90% {
+    transform: translate3d(-0.1em, 0, 0);
   }
-  
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
+  20%,
+  80% {
+    transform: translate3d(0.2em, 0, 0);
   }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-0.4em, 0, 0);
   }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
+  40%,
+  60% {
+    transform: translate3d(0.4em, 0, 0);
   }
 }
 
-.get-map-button {
+/*.get-map-button {
   display: flex;
   align-items: center;
+}*/
+
+.level-buttons{
+    width: 50%;
 }
 
+.get-map {
+  border-radius:50%;
+  background-color: grey!important;
+  /*display: inline-block;*/
+  outline: 0;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1.6em!important;
+}
+
+.level-buttons-level {
+  width: 100%;
+}
+
+.get-map:disabled,
+.get-map[disabled] {
+  left: 0;
+  width: 1%;
+  border-radius:50%;
+  background-color: white!important;
+  /*display: inline-block;*/
+  outline: 0;
+  /*padding: 1.0em;*/
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1.6em!important;
+  
+}
